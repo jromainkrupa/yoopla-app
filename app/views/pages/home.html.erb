@@ -1,1 +1,24 @@
-<h1>home</h1>
+<div class="container">
+  <%= image_tag("logos/logo-transparent.png",alt:"yoopla logo",class:"logo") %>
+
+  <div class="title-black">
+    <h1>Découvrons <br>yoopla<br>ensemble</h1>
+  </div>
+
+  <div>
+    <p>Connectez-vous, rejoignez la communauté et laissez-vous guider vers une nouvelle vie sans tabac.</p>
+  </div>
+  <div class="btn-container">
+    <%= link_to "S'inscrire", new_user_registration_path, class: "btn-gradient" %>
+  </div>
+  <div  class="link-container">
+    <p>Vous avez déjà un compte ?
+      <%= link_to "Se connecter", new_user_session_path, class: "link" %>
+    </p>
+  </div>
+</div>
+<div class="blue-square">
+  <div class="dark-wave">
+    <h3 class="txt-white">You are amazing !</h3>
+  </div>
+</div>
