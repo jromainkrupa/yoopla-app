@@ -53,8 +53,13 @@
   <div id="or">
     <p>OU</p>
   </div>
-  <div class="btn-container">
-    <%= link_to "S'inscrire avec facebook", root_path, class:"btn-fb-blue-up" %>
+
+    <%- if devise_mapping.omniauthable? %>
+    <div class="btn-container">
+      <%- resource_class.omniauth_providers.each do |provider| %>
+        <%= link_to "S'inscrire avec #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), class:"btn-fb-blue-up" %><br />
+      <% end %>
+    <% end %>
   </div>
 </div>
 
