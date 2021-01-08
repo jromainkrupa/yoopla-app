@@ -1,0 +1,15 @@
+.field {
+  margin-bottom: 8em;
+  width: 100%;
+}
+
+.field input {
+  font-family: 'Roboto', sans-serif;
+  color: $middle-gray;
+  border: none;
+  width:100%;
+  font-size: 2.8em;
+  font-weight:300;
+  padding-bottom: .5em;
+  border-bottom: 1px solid $middle-gray;
+}

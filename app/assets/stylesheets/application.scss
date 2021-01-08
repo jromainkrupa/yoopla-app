@@ -1,12 +1,16 @@
 @import "config/colors";
 @import "config/fonts";
-@import "components/buttons";
-@import "components/logo";
-@import "components/shapes";
+
+@import "components/index";
+
+@import "devise/sign_up";
 @import "pages/index";
 
 body {
   margin: 0em;
   padding: 0em;
-  background-color: #FAFAFA;
+  background-color: white;
+}
+.container {
+  margin: 3em;
 }
