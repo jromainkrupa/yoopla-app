@@ -33,14 +33,26 @@
   border: .1em solid #77DD77;
 }
 
-.btn-fb-blue {
+.btn-fb-blue-up {
   color: white;
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
-  font-size: 1.5em;
+  font-size: 1.3em;
   text-decoration: none;
-  padding: 1.2em 5.8em;
-  border-radius: 2em;
+  padding: 1.4em 7.3em;
+  border-radius: 2.5em;
+  background-color: #395793;
+  border: .1em solid #395793;
+}
+
+.btn-fb-blue-in {
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 2.8em;
+  text-decoration: none;
+  padding: .6em 3em;
+  border-radius: 1em;
   background-color: #395793;
   border: .1em solid #395793;
 }
