@@ -1,5 +1,6 @@
 .btn-gradient {
   color: white;
+  font-family: 'Roboto', sans-serif;
   font-weight: 400;
   font-size: 1em;
   text-decoration: none;
@@ -8,11 +9,26 @@
   background-color: $main-green;
   border: .1em solid #77DD77;
 }
+.btn-sign {
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 3em;
+  text-decoration: none;
+  padding: 0.5em 6em;
+  border-radius: 1em;
+  background-color: $main-blue-300;
+  border: .1em solid $main-blue-300;
+}
+
+.btn-container {
+  text-align: center;
+}
 
 .link {
   text-decoration: none;
   font-weight: 600;
-  color: $main-blue;
+  color: $main-blue-300;
 }
 
 #previous-chevron {

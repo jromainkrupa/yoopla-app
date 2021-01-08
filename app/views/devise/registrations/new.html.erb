@@ -10,34 +10,41 @@
 
    <div class="field">
     <%= f.input :first_name,
+          input_html: { class: "field-input" },
           label: false,
           autofocus: true,
-          autofocus: true,
+          required: true,
           placeholder: "Prénom" %>
    </div>
    <div class="field">
      <%= f.input :last_name,
+          input_html: { class: "field-input" },
           label: false,
           autofocus: true,
-          autofocus: true,
+          required: true,
           placeholder: "Nom" %>
    </div>
    <div class="field">
-     <%= f.email_field :email,
+     <%= f.input :email,
+          input_html: { class: "field-input" },
           autofocus: true,
+          label: false,
+          required: true,
           autocomplete: "email",
           placeholder: "Adresse e-mail" %>
    </div>
 
    <div class="field">
-     <%= f.password_field :password,
+     <%= f.input :password,
+          input_html: { class: "field-input" },
           label: false,
+          required: true,
           autocomplete: "new-password",
           placeholder: "Mot de passe (6 caractères minimum)" %>
    </div>
 
-   <div class="actions">
-     <%= f.submit "Sign up" %>
+   <div class="btn-container">
+     <%= f.submit "C'est parti!", class:"btn-sign" %>
    </div>
   <% end %>
 
