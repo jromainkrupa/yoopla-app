@@ -42,12 +42,19 @@
           autocomplete: "new-password",
           placeholder: "Mot de passe (6 caractères minimum)" %>
    </div>
+   <div class="conditions">
+     <p>En continuant, vous acceptez les <span>Conditions générales</span> et la <span>Politique de confidentialité</span> de Yoopla</p>
+   </div>
 
    <div class="btn-container">
-     <%= f.submit "C'est parti!", class:"btn-sign" %>
+     <%= f.submit "C'est parti!", class:"btn-large btn-green" %>
    </div>
   <% end %>
-
-  <%= render "devise/shared/links" %>
+  <div id="or">
+    <p>OU</p>
+  </div>
+  <div class="btn-container">
+    <%= link_to "S'inscrire avec facebook", root_path, class:"btn-large btn-fb-blue" %>
+  </div>
 </div>
 

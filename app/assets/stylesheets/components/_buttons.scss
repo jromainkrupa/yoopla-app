@@ -1,3 +1,8 @@
+#btn-home {
+  margin-top: 14em;
+  text-align: center;
+}
+
 .btn-gradient {
   color: white;
   font-family: 'Roboto', sans-serif;
@@ -6,10 +11,9 @@
   text-decoration: none;
   padding: 2em 18em;
   border-radius: 1em;
-  background-color: $main-green;
-  border: .1em solid #77DD77;
 }
-.btn-sign {
+
+.btn-large {
   color: white;
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
@@ -17,11 +21,32 @@
   text-decoration: none;
   padding: 0.5em 6em;
   border-radius: 1em;
+}
+
+.btn-blue {
   background-color: $main-blue-300;
   border: .1em solid $main-blue-300;
 }
 
+.btn-green {
+  background-color: $main-green;
+  border: .1em solid #77DD77;
+}
+
+.btn-fb-blue {
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 1.5em;
+  text-decoration: none;
+  padding: 1.2em 5.8em;
+  border-radius: 2em;
+  background-color: #395793;
+  border: .1em solid #395793;
+}
+
 .btn-container {
+  margin-top: 3em;
   text-align: center;
 }
 

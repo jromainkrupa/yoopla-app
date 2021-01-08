@@ -13,11 +13,27 @@
   padding-bottom: .5em;
   border-bottom: 1px solid $middle-gray;
 }
+
 .field-input:valid {
   border-bottom: 8px solid $main-green;
 }
+
 .field-input:focus {
   outline: none;
   border-bottom: 3px solid $main-blue-800;
 }
 
+.conditions p {
+  font-size: 1.4em;
+  font-weight:400;
+  line-height: 2em;
+}
+
+.conditions span {
+  color: $main-blue-700;
+}
+
+#or {
+  text-align: center;
+  font-size: 2em;
+}
