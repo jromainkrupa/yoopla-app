@@ -1,62 +1,63 @@
-<div class="container">
+<div class="m-4">
   <%= link_to root_path do %>
-    <i id="previous-chevron" class="fas fa-chevron-left"></i>
-  <% end %>
-  <div class="black-title">
+    <svg class="w-6 h-6 text-gray-800"xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /> </svg> <% end %>
+  <div class="text-5xl font-medium mt-12 text-gray-600">
     <h1>C'est parti</h1>
   </div>
-  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <div>
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 
-   <div class="field">
-    <%= f.input :first_name,
-          input_html: { class: "field-input" },
-          label: false,
-          autofocus: true,
-          required: true,
-          placeholder: "Prénom" %>
-   </div>
-   <div class="field">
-     <%= f.input :last_name,
-          input_html: { class: "field-input" },
-          label: false,
-          autofocus: true,
-          required: true,
-          placeholder: "Nom" %>
-   </div>
-   <div class="field">
-     <%= f.input :email,
-          input_html: { class: "field-input" },
-          autofocus: true,
-          label: false,
-          required: true,
-          autocomplete: "email",
-          placeholder: "Adresse e-mail" %>
-   </div>
+     <div class="mb-8 mt-10 w-full">
+      <%= f.input :first_name,
+            input_html: { class: "field-input w-full text-base font-normal pb-4" },
+            label: false,
+            autofocus: true,
+            required: true,
+            placeholder: "Prénom" %>
+     </div>
+     <div class="mb-8 w-full">
+       <%= f.input :last_name,
+            input_html: { class: "field-input w-full text-base font-normal pb-4" },
+            label: false,
+            autofocus: true,
+            required: true,
+            placeholder: "Nom" %>
+     </div>
+     <div class="mb-8 w-full">
+       <%= f.input :email,
+            input_html: { class: "field-input w-full text-base font-normal pb-4" },
+            autofocus: true,
+            label: false,
+            required: true,
+            autocomplete: "email",
+            placeholder: "Adresse e-mail" %>
+     </div>
 
-   <div class="field">
-     <%= f.input :password,
-          input_html: { class: "field-input" },
-          label: false,
-          required: true,
-          autocomplete: "new-password",
-          placeholder: "Mot de passe (6 caractères minimum)" %>
-   </div>
-   <div class="conditions">
-     <p>En continuant, vous acceptez les <span>Conditions générales</span> et la <span>Politique de confidentialité</span> de Yoopla</p>
-   </div>
+     <div class="mb-8 w-full">
+       <%= f.input :password,
+            input_html: { class: "field-input w-full text-base font-normal pb-4" },
+            label: false,
+            required: true,
+            autocomplete: "new-password",
+            placeholder: "Mot de passe (6 caractères minimum)" %>
+     </div>
+     <div class="text-center text-sm font-light mt-10 text-gray-600">
+       <p>En continuant, vous acceptez les <span class="text-blue-400 font-medium">Conditions générales</span> et la <span class="text-blue-400 font-medium">Politique de confidentialité</span> de Yoopla</p>
+     </div>
 
-   <div class="btn-container">
-     <%= f.submit "C'est parti!", class:"btn-large btn-green" %>
-   </div>
-  <% end %>
-  <div id="or">
+     <div class="mt-8 text-center">
+       <%= f.submit "C'est parti!", class:"fb-color text-white font-normal text-base no-underline bg-green-300 px-28 py-4 rounded-3xl" %>
+     </div>
+    <% end %>
+  </div>
+  <div class="text-center text-base mt-2">
     <p>OU</p>
   </div>
 
     <% if devise_mapping.omniauthable? %>
-    <div class="btn-container">
+    <div class="text-center mt-6">
       <% resource_class.omniauth_providers.each do |provider| %>
-        <%= link_to "S'inscrire avec #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), class:"btn-fb-blue-up" %><br />
+        <%= link_to "S'inscrire avec #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), class:"text-white font-normal text-base no-underline fb-color px-16 py-4 rounded-3xl" %><br />
       <% end %>
     <% end %>
   </div>

@@ -1,22 +1,23 @@
-<div class="container">
-  <%= image_tag("logos/logo-transparent.png",alt:"yoopla logo",class:"logo") %>
-  <h1>Découvrons <br>yoopla<br>ensemble</h1>
+<div class="m-4">
+  <%= image_tag("logos/logo-transparent.png",alt:"yoopla logo",class:"w-32 md:w-64") %>
+  <div class="text-5xl font-medium mt-12 text-gray-600">
+    <h1>Découvrons <br>yoopla<br>ensemble</h1>
+  </div>
 
-
-  <div>
+  <div class="text-sm font-light mt-8 text-gray-600">
     <p>Connectez-vous, rejoignez la communauté et laissez-vous guider vers une nouvelle vie sans tabac.</p>
   </div>
-  <div id="btn-home">
-    <%= link_to "S'inscrire", new_user_registration_path, class: "btn-gradient btn-green" %>
+  <div class="mt-20 text-center">
+    <%= link_to "S'inscrire", new_user_registration_path, class: "text-white font-normal text-base no-underline bg-green-300 px-28 py-4 rounded-3xl" %>
   </div>
-  <div  class="link-container">
+  <div  class="text-center text-sm font-light mt-10 text-gray-600">
     <p>Vous avez déjà un compte ?
-      <%= link_to "Se connecter", new_user_session_path, class: "link" %>
+      <%= link_to "Se connecter", new_user_session_path, class: "no-underline font-bold text-blue-400" %>
     </p>
   </div>
 </div>
-<div class="blue-square">
-  <div class="dark-wave">
-    <h3 class="txt-white">You are amazing !</h3>
+<div class="bg-blue-400 w-full h-12 absolute bottom-0">
+  <div class="bg-blue-400 w-full h-full rounded-full absolute bottom-7">
+    <h3 class="text-white text-center text-bold mt-4">You are amazing !</h3>
   </div>
 </div>
