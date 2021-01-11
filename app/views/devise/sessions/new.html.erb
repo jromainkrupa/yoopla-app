@@ -6,11 +6,11 @@
     <h2 class="text-xl m-auto font-medium text-gray-600">Ravis de vous revoir</h1>
   </div>
 
-  <div id="sign_in_form">
+  <div>
     <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <div class="field">
+      <div class="mb-8 mt-10 w-full">
         <%= f.input :email,
-             input_html: { class: "field-input" },
+             input_html: { class: "field-input w-full text-base font-normal pb-4" },
              autofocus: true,
              label: false,
              required: true,
@@ -18,30 +18,30 @@
              placeholder: "Adresse e-mail" %>
       </div>
 
-      <div class="field">
+      <div class="mb-8 w-full">
         <%= f.input :password,
-             input_html: { class: "field-input" },
+             input_html: { class: "field-input w-full text-base font-normal pb-4" },
              label: false,
              required: true,
              autocomplete: "new-password",
              placeholder: "Mot de passe (6 caractères minimum)" %>
       </div>
-      <div class="fogotten-password">
+      <div class="text-sm font-light mt-10 text-gray-600">
         <%= link_to "Vous avez oublié votre mot de passe ?", new_password_path(resource_name) %>
       </div>
 
-      <div class="btn-container">
-        <%= f.submit "Se connecter", class:"btn-large btn-green" %>
+      <div class="mt-8 text-center">
+        <%= f.submit "Se connecter", class:"text-white font-normal text-base no-underline bg-green-300 px-28 py-4 rounded-3xl" %>
       </div>
     <% end %>
   </div>
 
-  <div id="or">
+  <div class="text-center text-base mt-2">
     <p>OU</p>
   </div>
 
-  <div class="btn-container">
-    <%= link_to "Se connecter avec Facebook", root_path, class:"btn-fb-blue-in" %>
+  <div class="text-center mt-6">
+    <%= link_to "Se connecter avec Facebook", root_path, class:"text-white font-normal text-base no-underline fb-color px-14 py-4 rounded-3xl" %>
   </div>
 
 </div>
