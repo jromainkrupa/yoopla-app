@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   get 'set_status', to: 'pages#set_status'
   get 'privacy_policy', to: 'pages#privacy_policy'
   get 'terms_and_conditions', to: 'pages#terms_and_conditions'
+  get 'data_supression', to: 'pages#data_supression'
+
 end
