@@ -53,7 +53,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #The path used after sign up.
   def after_sign_in_path_for(resource)
     if current_user.user_status == nil
-      set_status_form_path
+      set_status_form_user_path(current_user)
     end
   end
 
