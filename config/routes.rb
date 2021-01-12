@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
   get 'set_status_form',      to: 'pages#set_status_form'
   get 'smoker_profile_definition', to: 'pages#smoker_profile_definition'
+  get 'invite_a_friend', to: 'pages#invite_a_friend'
   put 'set_status',          to: 'pages#set_status'
   get 'privacy_policy',       to: 'pages#privacy_policy'
   get 'terms_and_conditions', to: 'pages#terms_and_conditions'
