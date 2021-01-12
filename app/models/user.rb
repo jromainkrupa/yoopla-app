@@ -5,6 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   devise :omniauthable, omniauth_providers: [:facebook]
 
+  USER_STATUS = [nil,"smoker_setup","mentor"]
+
+  validates :user_status, inclusion: { in: USER_STATUS }
+
   def self.find_for_facebook_oauth(auth)
     # conversion part of the auth hash
     user_params = auth.slice("provider", "uid")
