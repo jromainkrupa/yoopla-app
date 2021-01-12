@@ -51,8 +51,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   #The path used after sign up.
-  def after_sign_up_path_for(resource)
-    set_status_path
+  def after_sign_in_path_for(resource)
+    if current_user.user_status == nil
+      set_status_form_path
+    end
   end
 
   # The path used after sign up for inactive accounts.
