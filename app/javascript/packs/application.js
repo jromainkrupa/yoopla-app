@@ -9,9 +9,11 @@ require("@rails/activestorage").start()
 require("channels")
 
 import { buttonTextToggler } from "../components/button_text_toggler.js"
+import { cigaretteCounter } from "../components/cigarette_counter.js"
 
 import "stylesheets/application"
 
 document.addEventListener('turbolinks:load', () => {
   buttonTextToggler();
+  cigaretteCounter();
 });

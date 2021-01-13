@@ -1,9 +1,28 @@
 <div class="m-4">
-  <div class="flex items-center">
-    <%= link_to root_path do %>
-    <svg class="w-6 h-6 text-gray-800"xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /> </svg>
-    <% end %>
-    <h2 class="text-xl m-auto font-medium text-gray-600">Ravis de vous revoir</h2>
+  <div class="flex justify-center mt-8">
+    <%= render "shared/navigation_circles" %>
   </div>
-<h1>smoker profile definition</h1>
-<%= current_user.first_name %>
+  <div class="text-center mt-16">
+    <h2 class="text-xl m-auto font-medium text-gray-600"><%= current_user.first_name %></h2>
+    <p class="text-sm font-light mt-2 text-gray-600">Nous avons besoin d'en savoir un peu plus sur vos habitudes de consommation pour créer un programme de réuction 100% personnalisé et efficace.</p>
+  </div>
+  <div>
+    <h3 class="text-center mt-8">Nombre de cigarette par jour en moyenne</h3>
+    <div class="flex items-center justify-center mt-4 w-24 h-20 m-auto">
+      <a data-offset="-1" class="incrementer inline-flex items-center p-3 border border-transparent rounded-full shadow-sm text-white bg-blue-400 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+        <svg  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+        </svg>
+        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" />
+        </svg>
+      </a>
+      <span class="p-8 text-3xl text-gray-600" id="counter" data-count="1">1</span>
+      <a data-offset="1" class="incrementer inline-flex items-center p-3 border border-transparent rounded-full shadow-sm text-white bg-blue-400 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</div>
