@@ -1,45 +1,106 @@
 <div class="m-4">
   <div class="flex justify-center mt-8">
-    <%= render "shared/navigation_circles" %>
+    <!-- This example requires Tailwind CSS v2.0+ -->
+    <nav aria-label="Progress">
+      <ol class="flex items-center">
+        <li class="relative pr-8 sm:pr-20">
+          <!-- Completed Step -->
+          <div class="absolute inset-0 flex items-center" aria-hidden="true">
+            <div class="h-0.5 w-full bg-blue-400"></div>
+          </div>
+          <a href="#" class="relative w-8 h-8 flex items-center justify-center bg-blue-400 rounded-full hover:bg-blue-900">
+            <!-- Heroicon name: check -->
+            <svg class="w-5 h-5 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+            </svg>
+            <span class="sr-only">Step 2</span>
+          </a>
+        </li>
+
+        <li class="relative pr-8 sm:pr-20">
+          <!-- Current Step -->
+          <div class="absolute inset-0 flex items-center" aria-hidden="true">
+            <div class="h-0.5 w-full bg-gray-200"></div>
+          </div>
+          <a href="#" class="relative w-8 h-8 flex items-center justify-center bg-white border-2 border-blue-400 rounded-full" aria-current="step">
+            <span class="h-2.5 w-2.5 bg-blue-400 rounded-full" aria-hidden="true"></span>
+            <span class="sr-only">Step 3</span>
+          </a>
+        </li>
+
+        <li class="relative pr-8 sm:pr-20">
+          <!-- Upcoming Step -->
+          <div class="absolute inset-0 flex items-center" aria-hidden="true">
+            <div class="h-0.5 w-full bg-gray-200"></div>
+          </div>
+          <a href="#" class="group relative w-8 h-8 flex items-center justify-center bg-white border-2 border-gray-300 rounded-full hover:border-gray-400">
+            <span class="h-2.5 w-2.5 bg-transparent rounded-full group-hover:bg-gray-300" aria-hidden="true"></span>
+            <span class="sr-only">Step 4</span>
+          </a>
+        </li>
+
+        <li class="relative">
+          <!-- Upcoming Step -->
+          <div class="absolute inset-0 flex items-center" aria-hidden="true">
+            <div class="h-0.5 w-full bg-gray-200"></div>
+          </div>
+          <a href="#" class="group relative w-8 h-8 flex items-center justify-center bg-white border-2 border-gray-300 rounded-full hover:border-gray-400">
+            <span class="h-2.5 w-2.5 bg-transparent rounded-full group-hover:bg-gray-300" aria-hidden="true"></span>
+            <span class="sr-only">Step 5</span>
+          </a>
+        </li>
+      </ol>
+    </nav>
+
   </div>
   <div class="text-center mt-16">
-    <h2 class="text-xl m-auto font-medium text-gray-600">Hello <%= current_user.first_name %></h2>
+    <h2 class="text-2xl m-auto font-medium text-gray-600">Hello <%= current_user.first_name %></h2>
     <p class="text-sm font-light mt-2 text-gray-600">Nous avons besoin d'en savoir un peu plus sur vos habitudes de consommation pour créer un programme de réuction 100% personnalisé et efficace.</p>
   </div>
   <div>
-    <%= simple_form_for current_user, url: set_status_user_path(current_user), html: { method: :put }, remote: true do |f| %>
+    <%= simple_form_for @user, url: profile_update_user_path(@user), html: { method: :put } do |f| %>
+    <div class="shadow mt-12 p-4">
+      <div class="text-center">
+        <h3 class="text-center">Nombre de cigarette par jour</h3>
+        <p class="text-xs font-light mt-2 text-gray-600">🚦 Nous prendrons en compte cette valeur pour le calcul de votre programme</p>
+      </div>
+      <div class="flex items-center justify-center mt-4 h-20 mx-16">
+        <a data-offset="-1" class="incrementer inline-flex items-center p-3 border border-transparent rounded-full shadow-sm text-white bg-blue-400 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          <svg  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+          </svg>
+          <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" />
+          </svg>
+        </a>
+        <%=  f.input :average_cigarettes_per_day,
+                      placeholder: '1',
+                      required: true,
+                      as: :numeric,
+                      wrapper_html: { class: ' mx-auto' },
+                      input_html: { id: 'counter', class: 'w-4 text-center font-bold','data-count': '1'},
+                      label:false %>
 
-    <h3 class="text-center mt-8">Nombre de cigarette par jour en moyenne</h3>
-    <div class="flex items-center justify-center mt-4 h-20 mx-16">
-      <a data-offset="-1" class="incrementer inline-flex items-center p-3 border border-transparent rounded-full shadow-sm text-white bg-blue-400 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-        <svg  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-        </svg>
-        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" />
-        </svg>
-      </a>
-      <%=  f.input :average_cigarettes_per_day,
-                    placeholder: '1',
-                    as: :numeric,
-                    wrapper_html: { class: ' mx-auto' },
-                    input_html: { id: 'counter', class: 'w-4 text-center','data-count': '1'},
-                    label:false %>
-
-      <a data-offset="1" class="incrementer inline-flex items-center p-3 border border-transparent rounded-full shadow-sm text-white bg-blue-400 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-        </svg>
-      </a>
+        <a data-offset="1" class="incrementer inline-flex items-center p-3 border border-transparent rounded-full shadow-sm text-white bg-blue-400 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+          </svg>
+        </a>
+      </div>
     </div>
-    <h3 class="text-center mt-8">Heure de votre première cigarette</h3>
-    <div class="mt-8">
-      <%=  f.input :hour_of_first_smoke,
-                    as: :time,
-                    label: false,
-                    minute_step: 30,
-                    wrapper_html: { class: 'flex items-center justify-center mx-auto' },
-                    input_html: { class: 'm-2 block w-12 pl-1 pr-1 py-2 bg-blue-400 text-white  text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md' }%>
+    <div class="shadow mt-6 p-4">
+      <div class="text-center">
+        <h3 class="text-center">Heure de votre première cigarette</h3>
+      </div>
+      <div class="mt-4">
+        <%=  f.input :hour_of_first_smoke,
+                      as: :string,
+                      required: true,
+                      label: false,
+                      minute_step: 30,
+                      wrapper_html: { class: 'flex items-center justify-center mx-auto' },
+                      input_html: { type: :date, class: 'm-2 block w-12 pl-1 pr-1 py-2 bg-blue-400 text-white  text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md' }%>
+      </div>
     </div>
     <div class="mt-8 text-center">
       <%= f.submit "étape suivante", class:"text-white font-normal text-base no-underline bg-gray-300 px-16 py-3 rounded-3xl" %>

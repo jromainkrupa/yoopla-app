@@ -18,17 +18,25 @@ class UsersController < ApplicationController
       render :set_status_form
     end
   end
+  def profile_update
+    average_cigarettes_per_day = params[:user][:average_cigarettes_per_day].to_i
+    hour_of_first_smoke        = params[:user][:hour_of_first_smoke].to_i
+    raise
+  end
+
+  def favorite_cigarette_definition
+  end
+
 
   def set_status_form
-
   end
 
   def smoker_profile_definition
-
   end
 
   def invite_a_friend
   end
+
 
   private
 

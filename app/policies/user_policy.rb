@@ -20,4 +20,8 @@ class UserPolicy < ApplicationPolicy
   def invite_a_friend?
     record == user && user.user_status == "mentor"
   end
+
+  def profile_update?
+    record == user && user.user_status == "smoker_setup"
+  end
 end

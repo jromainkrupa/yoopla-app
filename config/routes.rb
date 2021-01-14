@@ -11,6 +11,8 @@ Rails.application.routes.draw do
       get 'set_status_form'
       put 'set_status'
       get 'smoker_profile_definition'
+      put 'profile_update'
+      get 'favorite_cigarette_definition'
       get 'invite_a_friend'
     end
   end
