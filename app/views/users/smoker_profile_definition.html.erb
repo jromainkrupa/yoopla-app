@@ -10,7 +10,7 @@
     <%= simple_form_for current_user, url: set_status_user_path(current_user), html: { method: :put }, remote: true do |f| %>
 
     <h3 class="text-center mt-8">Nombre de cigarette par jour en moyenne</h3>
-    <div class="flex items-center justify-center mt-4 w-24 h-20 m-auto">
+    <div class="flex items-center justify-center mt-4 h-20 mx-16">
       <a data-offset="-1" class="incrementer inline-flex items-center p-3 border border-transparent rounded-full shadow-sm text-white bg-blue-400 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
         <svg  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
@@ -20,19 +20,23 @@
         </svg>
       </a>
       <%=  f.input :average_cigarettes_per_day,
+                    placeholder: '1',
                     as: :numeric,
-                    input_html: { id: 'counter', class: 'text-gray-600','data-count': '1'},
+                    wrapper_html: { class: ' mx-auto' },
+                    input_html: { id: 'counter', class: 'w-4 text-center','data-count': '1'},
                     label:false%>
 
-<!--       <span class="p-8 text-3xl text-gray-600" id="counter" data-count="1">1</span>
- -->      <a data-offset="1" class="incrementer inline-flex items-center p-3 border border-transparent rounded-full shadow-sm text-white bg-blue-400 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+      <a data-offset="1" class="incrementer inline-flex items-center p-3 border border-transparent rounded-full shadow-sm text-white bg-blue-400 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
         <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
         </svg>
       </a>
     </div>
+    <div>
+
+    </div>
     <div class="mt-8 text-center">
-      <%= f.submit "Choisir son univers", class:"text-white font-normal text-base no-underline bg-gray-300 px-24 py-4 rounded-3xl" %>
+      <%= f.submit "étape suivante", class:"text-white font-normal text-base no-underline bg-gray-300 px-16 py-3 rounded-3xl" %>
     </div>
     <% end %>
   </div>
