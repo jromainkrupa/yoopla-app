@@ -2,7 +2,7 @@ const cigaretteCounter = () => {
 
 const updateCounter = (counter, count) => {
   counter.dataset.count = count;
-  counter.innerText = count;
+  counter.value = count;
 };
 
 const updateForm = (event) => {

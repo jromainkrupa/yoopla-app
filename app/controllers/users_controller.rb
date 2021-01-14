@@ -20,9 +20,11 @@ class UsersController < ApplicationController
   end
 
   def set_status_form
+
   end
 
   def smoker_profile_definition
+
   end
 
   def invite_a_friend
