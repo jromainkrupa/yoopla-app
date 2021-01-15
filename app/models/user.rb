@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   devise :omniauthable, omniauth_providers: [:facebook]
 
-  acts_as_taggable_on :best_cigarettes_tags
+  acts_as_taggable_on :best_cigarettes
 
   BEST_CIGARETTES_TAGS = ["after_wake_up","after_breakfast",
                           "morning_break","before_lunch",

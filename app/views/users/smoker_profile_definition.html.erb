@@ -77,8 +77,8 @@
                       placeholder: '1',
                       required: true,
                       as: :numeric,
-                      wrapper_html: { class: ' mx-auto' },
-                      input_html: { id: 'counter', class: 'w-4 text-center font-bold','data-count': '1'},
+                      wrapper_html: { class: 'mx-auto' },
+                      input_html: { id: 'counter', class: 'w-8 text-center font-bold','data-count': '1'},
                       label:false %>
 
         <a data-offset="1" class="incrementer inline-flex items-center p-3 border border-transparent rounded-full shadow-sm text-white bg-blue-400 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
@@ -110,7 +110,7 @@
         <h3 class="text-center">Vos 3 cigarettes préférées</h3>
       </div>
       <div class="mt-4 ">
-        <%=  f.input :best_cigarettes_tags,
+        <%=  f.input :best_cigarettes,
                       as: :check_boxes,
                       label: false,
                       wrapper_html: { class:'text-center'},

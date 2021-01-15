@@ -12,7 +12,7 @@ Rails.application.routes.draw do
       put 'set_status'
       get 'smoker_profile_definition'
       put 'profile_update'
-      get 'favorite_cigarette_definition'
+      get 'smoker_profile_definition_step_2'
       get 'invite_a_friend'
     end
   end
