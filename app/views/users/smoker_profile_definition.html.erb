@@ -94,13 +94,36 @@
       </div>
       <div class="mt-4">
         <%=  f.input :hour_of_first_smoke,
-                      as: :string,
+                      as: :select,
                       required: true,
                       label: false,
-                      minute_step: 30,
+                      selected: '10:00',
+                      collection: (6..20).map {|n| ["#{n}:00","#{n}:30"]}.flatten,
                       wrapper_html: { class: 'flex items-center justify-center mx-auto' },
-                      input_html: { type: :date, class: 'm-2 block w-12 pl-1 pr-1 py-2 bg-blue-400 text-white  text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md' }%>
+                      input_html: { type: :date, class: 'm-2 block w-36 pl-4 pr-1 py-2 bg-blue-400 text-white border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md' }%>
       </div>
+
+    </div>
+
+    <div class="shadow mt-6 p-4">
+      <div class="text-center">
+        <h3 class="text-center">Vos 3 cigarettes préférées</h3>
+      </div>
+      <div class="mt-4 ">
+        <%=  f.input :best_cigarettes_tags,
+                      as: :check_boxes,
+                      label: false,
+                      wrapper_html: { class:'text-center'},
+                      required: true,
+                      item_wrapper_class: 'tag-item',
+                      input_html: { class: 'tag-selector' },
+                      collection: ["Au réveil ⏰","Après petit-déjeuner 🥐", "Pause café ☕️ du matin",
+                                  "Après déjeuner 🍽", "Pause café ☕️ de l'après-midi",
+                                  "après le travail 💼", "avant diner",
+                                  "après diner 🍜", "avant de dormir 🛌"].zip(User::BEST_CIGARETTES_TAGS)%>
+
+      </div>
+
     </div>
     <div class="mt-8 text-center">
       <%= f.submit "étape suivante", class:"text-white font-normal text-base no-underline bg-gray-300 px-16 py-3 rounded-3xl" %>

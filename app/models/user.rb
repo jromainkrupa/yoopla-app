@@ -5,6 +5,14 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   devise :omniauthable, omniauth_providers: [:facebook]
 
+  acts_as_taggable_on :best_cigarettes_tags
+
+  BEST_CIGARETTES_TAGS = ["after_wake_up","after_breakfast",
+                          "morning_break","before_lunch",
+                          "after_lunch","afternoon_break",
+                          "after_work","before_diner",
+                          "after_dinner","before_bed"]
+
   STATUS = ["smoker_setup","mentor"]
 
   validates :user_status, inclusion: { in: STATUS, allow_nil: true }
