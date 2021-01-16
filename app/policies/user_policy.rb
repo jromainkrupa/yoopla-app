@@ -24,4 +24,8 @@ class UserPolicy < ApplicationPolicy
   def profile_update?
     record == user && user.user_status == "smoker_setup"
   end
+
+  def smoker_profile_definition_step_2?
+    record == user && user.user_status == "smoker_setup"
+  end
 end
