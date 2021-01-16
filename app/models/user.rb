@@ -15,6 +15,8 @@ class User < ApplicationRecord
 
   STATUS = ["smoker_setup","mentor"]
 
+  # validate :best_cigarettes
+  validates :average_cigarettes_per_day, inclusion: { in: (3..60), allow_nil: true}
   validates :user_status, inclusion: { in: STATUS, allow_nil: true }
 
   def self.find_for_facebook_oauth(auth)

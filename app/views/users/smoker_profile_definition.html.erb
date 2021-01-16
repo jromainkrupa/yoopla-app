@@ -59,6 +59,9 @@
   </div>
   <div>
     <%= simple_form_for @user, url: profile_update_user_path(@user), html: { method: :put } do |f| %>
+    <% if defined?(messages) %>
+    <%= messages %>
+    <% end %>
     <div class="shadow mt-12 p-4">
       <div class="text-center">
         <h3 class="text-center">Nombre de cigarette par jour</h3>
@@ -97,7 +100,6 @@
                       as: :select,
                       required: true,
                       label: false,
-                      selected: '10:00',
                       collection: (6..20).map {|n| ["#{n}:00","#{n}:30"]}.flatten,
                       wrapper_html: { class: 'flex items-center justify-center mx-auto' },
                       input_html: { type: :date, class: 'm-2 block w-36 pl-4 pr-1 py-2 bg-blue-400 text-white border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md' }%>

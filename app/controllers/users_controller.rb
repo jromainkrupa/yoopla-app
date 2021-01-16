@@ -18,6 +18,7 @@ class UsersController < ApplicationController
       render :set_status_form
     end
   end
+
   def profile_update
     if params_checking(params[:user])
       @user.average_cigarettes_per_day = params[:user][:average_cigarettes_per_day].to_i
@@ -29,13 +30,12 @@ class UsersController < ApplicationController
         render :smoker_profile_definition
       end
     else
-      render :smoker_profile_definition
+      render :smoker_profile_definition, locals: { messages: "test"}
     end
   end
 
   def favorite_cigarette_definition
   end
-
 
   def set_status_form
   end
@@ -61,9 +61,10 @@ class UsersController < ApplicationController
   end
 
   def params_checking(user_params)
+    # not a good way to get errors.
    return false if user_params[:average_cigarettes_per_day].to_i.nil? || user_params[:average_cigarettes_per_day].to_i < 2
-   return false if user_params[:hour_of_first_smoke].to_i.nil?
-   return false if user_params[:best_cigarettes].to_a.count < 2
+   return false if user_params[:hour_of_first_smoke] == ""
+   return false if user_params[:best_cigarettes].to_a.count < 4
    true
   end
 
