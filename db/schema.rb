@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_15_141115) do
+ActiveRecord::Schema.define(version: 2021_01_18_103506) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "programs", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.datetime "program_end"
+    t.datetime "program_start"
+    t.integer "init_smoke"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_programs_on_user_id"
+  end
 
   create_table "taggings", id: :serial, force: :cascade do |t|
     t.integer "tag_id"
@@ -64,5 +74,6 @@ ActiveRecord::Schema.define(version: 2021_01_15_141115) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "programs", "users"
   add_foreign_key "taggings", "tags"
 end

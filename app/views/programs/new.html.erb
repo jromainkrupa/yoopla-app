@@ -1,0 +1,39 @@
+<div class="m-4">
+  <div class="text-center mt-16">
+    <h2 class="text-2xl m-auto font-medium text-gray-600">Merci <%= current_user.first_name %></h2>
+    <p class="text-sm font-light mt-2 text-gray-600"></p>
+  </div>
+
+  <div>
+    <%= simple_form_for @program do |f| %>
+      <div id="program-form-div" class="mt-6">
+        <div class="text-center">
+          <h3 class="text-center">Quand souhaiteriez-vous arrêter de fumer ?</h3>
+          <p class="text-sm font-light mt-1 text-gray-600">Nous préconisons entre 20 jours et 6 mois</p>
+        </div>
+        <div class="text-center mt-4 px-4">
+          <%= f.input  :program_start, as: :string,default: Date.today, required: false,label: false, input_html: {id: "range_start", class:"hidden"} %>
+          <%= f.input  :program_end, as: :string, required: false,label: false, input_html: {id: "range_end", class:"hidden" } %>
+        </div>
+      </div>
+
+      <div class="mt-4 text-center">
+        <p>Du <span id="start_date" class="font-bold">_________</span> au <span id="end_date" class="font-bold">_________</span></p>
+        <p>Soit <span id="total-days" class="font-bold">0</span> jours</p>
+        <div class="mt-3 flex items-center">
+          <p class="mr-2">💪</p>
+          <div id="gradient-difficulty" class="bg-gradient-to-r from-red-500 via-blue-500 to-green-500 h-12 w-full"></div>
+          <p class="ml-2">🤙</p>
+        </div>
+        <p id="text_difficulty"></p>
+      </div>
+
+      <div class="mt-8 text-center">
+        <%= f.submit "Choisir son univers", class:"text-white font-normal text-base no-underline bg-gray-300 px-24 py-4 rounded-3xl" %>
+      </div>
+
+
+      <%= current_user.best_cigarette_list %>
+    <% end %>
+  </div>
+</div>

@@ -59,7 +59,6 @@
   </div>
   <div>
     <%= simple_form_for @user, url: profile_update_user_path(@user), html: { method: :put } do |f| %>
-      <% if defined?(messages) %> <!-- This test if errors ae rendered -->
         <div class="shadow mt-12 p-4">
           <div class="text-center">
             <h3 class="text-center">Nombre de cigarette par jour</h3>
@@ -88,9 +87,11 @@
               </svg>
             </a>
           </div>
-          <div class="text-center">
-            <p class="text-xs font-light text-red-500"><%= messages[:avg_cig_msg] %></p>
-          </div>
+          <% if defined?(messages) %> <!-- This test if errors ae rendered -->
+            <div class="text-center">
+              <p class="text-xs font-light text-red-500"><%= messages[:avg_cig_msg] %></p>
+            </div>
+          <% end %>
         </div>
         <div class="shadow mt-6 p-4">
           <div class="text-center">
@@ -105,9 +106,11 @@
                           wrapper_html: { class: 'flex items-center justify-center mx-auto' },
                           input_html: { type: :date, class: 'm-2 block w-36 pl-4 pr-1 py-2 bg-blue-400 text-white border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md' }%>
           </div>
-          <div class="text-center">
-            <p class="text-xs font-light text-red-500"><%= messages[:first_smoke_msg] %></p>
-          </div>
+          <% if defined?(messages) %>
+            <div class="text-center">
+              <p class="text-xs font-light text-red-500"><%= messages[:first_smoke_msg] %></p>
+            </div>
+          <% end %>
         </div>
         <div class="shadow mt-6 p-4">
           <div class="text-center">
@@ -127,14 +130,15 @@
                                       "après diner 🍜", "avant de dormir 🛌"].zip(User::BEST_CIGARETTES_TAGS)%>
 
           </div>
-          <div class="text-center">
-            <p class="text-xs font-light text-red-500"><%= messages[:best_cig_msg] %></p>
-          </div>
+          <% if defined?(messages) %>
+            <div class="text-center">
+              <p class="text-xs font-light text-red-500"><%= messages[:best_cig_msg] %></p>
+            </div>
+          <% end %>
         </div>
         <div class="mt-8 text-center">
           <%= f.submit "étape suivante", class:"text-white font-normal text-base no-underline bg-gray-300 px-16 py-3 rounded-3xl" %>
         </div>
       <% end %>
-    <% end %>
   </div>
 </div>

@@ -7,12 +7,12 @@ class UsersController < ApplicationController
     if choice == User::STATUS.first
       @user.user_status = choice
       @user.save
-      redirect_to smoker_profile_definition_user_path(current_user)
+      redirect_to smoker_profile_definition_user_path(@user)
 
     elsif choice == User::STATUS.second
       @user.user_status = choice
       @user.save
-      redirect_to invite_a_friend_user_path(current_user)
+      redirect_to invite_a_friend_user_path(@user)
 
     else
       render :set_status_form
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
       @user.hour_of_first_smoke        = params[:user][:hour_of_first_smoke].to_s
       @user.best_cigarette_list        = params[:user][:best_cigarettes].to_a.drop(1).join(", ")
       if @user.save
-        redirect_to smoker_profile_definition_step_2_user_path(@user)
+        redirect_to new_program_path(@user)
       else
         render :smoker_profile_definition
       end

@@ -9,13 +9,19 @@ require("@rails/activestorage").start()
 require("channels")
 
 import { buttonTextToggler } from "../components/button_text_toggler.js"
-import { cigaretteCounter } from "../components/cigarette_counter.js"
+import { cigaretteCounter  } from "../components/cigarette_counter.js"
+import { datePicker }        from "../plugins/date_picker.js"
+import { dynamicPrice }      from "../plugins/dynamic_price.js"
+
+import "controllers"
+
 
 import "stylesheets/application"
 
 document.addEventListener('turbolinks:load', () => {
   buttonTextToggler();
   cigaretteCounter();
+  datePicker();
+  dynamicPrice();
 });
 
-import "controllers"
