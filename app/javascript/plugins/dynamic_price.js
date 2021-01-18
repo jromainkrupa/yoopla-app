@@ -6,7 +6,8 @@ const dynamicPrice = () => {
   const difficultyGradient = document.getElementById("gradient-difficulty")
   const startDateReminder  = document.getElementById("start_date")
   const endDateReminder    = document.getElementById("end_date")
-  const difficultyText = document.getElementById("text_difficulty")
+  const difficultyText     = document.getElementById("text_difficulty")
+  const validationButton   = document.querySelector("input[name='commit']")
 
   if (startDate && endDate && totalDays) {
     // calcul la diff entre la date start et la date end
@@ -35,6 +36,9 @@ const dynamicPrice = () => {
           difficultyGradient.classList.add('bg-gradient-to-r','from-blue-600','to-blue-300')
           difficultyText.innerText = "🤙"
         }
+        validationButton.setAttribute("value","étape 3")
+        validationButton.classList.remove('bg-gray-300', 'px-24')
+        validationButton.classList.add('bg-green-300','px-16')
       }
 
 
