@@ -17,3 +17,5 @@ document.addEventListener('turbolinks:load', () => {
   buttonTextToggler();
   cigaretteCounter();
 });
+
+import "controllers"
