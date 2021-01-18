@@ -59,77 +59,82 @@
   </div>
   <div>
     <%= simple_form_for @user, url: profile_update_user_path(@user), html: { method: :put } do |f| %>
-    <% if defined?(messages) %>
-    <%= messages %>
-    <% end %>
-    <div class="shadow mt-12 p-4">
-      <div class="text-center">
-        <h3 class="text-center">Nombre de cigarette par jour</h3>
-        <p class="text-xs font-light mt-2 text-gray-600">🚦 Nous prendrons en compte cette valeur pour le calcul de votre programme</p>
-      </div>
-      <div class="flex items-center justify-center mt-4 h-20 mx-16">
-        <a data-offset="-1" class="incrementer inline-flex items-center p-3 border border-transparent rounded-full shadow-sm text-white bg-blue-400 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-          <svg  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-          </svg>
-          <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" />
-          </svg>
-        </a>
-        <%=  f.input :average_cigarettes_per_day,
-                      placeholder: '1',
-                      required: true,
-                      as: :numeric,
-                      wrapper_html: { class: 'mx-auto' },
-                      input_html: { id: 'counter', class: 'w-8 text-center font-bold','data-count': '1'},
-                      label:false %>
+      <% if defined?(messages) %> <!-- This test if errors ae rendered -->
+        <div class="shadow mt-12 p-4">
+          <div class="text-center">
+            <h3 class="text-center">Nombre de cigarette par jour</h3>
+            <p class="text-xs font-light mt-2 text-gray-600">🚦 Nous prendrons en compte cette valeur pour le calcul de votre programme</p>
+          </div>
+          <div class="flex items-center justify-center mt-4 h-20 mx-16">
+            <a data-offset="-1" class="incrementer inline-flex items-center p-3 border border-transparent rounded-full shadow-sm text-white bg-blue-400 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+              <svg  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+              </svg>
+              <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" />
+              </svg>
+            </a>
+            <%=  f.input :average_cigarettes_per_day,
+                          placeholder: '1',
+                          required: true,
+                          as: :numeric,
+                          wrapper_html: { class: 'mx-auto' },
+                          input_html: { id: 'counter', class: 'w-8 text-center font-bold','data-count': '1'},
+                          label:false %>
 
-        <a data-offset="1" class="incrementer inline-flex items-center p-3 border border-transparent rounded-full shadow-sm text-white bg-blue-400 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-          <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-          </svg>
-        </a>
-      </div>
-    </div>
-    <div class="shadow mt-6 p-4">
-      <div class="text-center">
-        <h3 class="text-center">Heure de votre première cigarette</h3>
-      </div>
-      <div class="mt-4">
-        <%=  f.input :hour_of_first_smoke,
-                      as: :select,
-                      required: true,
-                      label: false,
-                      collection: (6..20).map {|n| ["#{n}:00","#{n}:30"]}.flatten,
-                      wrapper_html: { class: 'flex items-center justify-center mx-auto' },
-                      input_html: { type: :date, class: 'm-2 block w-36 pl-4 pr-1 py-2 bg-blue-400 text-white border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md' }%>
-      </div>
+            <a data-offset="1" class="incrementer inline-flex items-center p-3 border border-transparent rounded-full shadow-sm text-white bg-blue-400 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+              <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+              </svg>
+            </a>
+          </div>
+          <div class="text-center">
+            <p class="text-xs font-light text-red-500"><%= messages[:avg_cig_msg] %></p>
+          </div>
+        </div>
+        <div class="shadow mt-6 p-4">
+          <div class="text-center">
+            <h3 class="text-center">Heure de votre première cigarette</h3>
+          </div>
+          <div class="mt-4">
+            <%=  f.input :hour_of_first_smoke,
+                          as: :select,
+                          required: true,
+                          label: false,
+                          collection: (6..20).map {|n| ["#{n}:00","#{n}:30"]}.flatten,
+                          wrapper_html: { class: 'flex items-center justify-center mx-auto' },
+                          input_html: { type: :date, class: 'm-2 block w-36 pl-4 pr-1 py-2 bg-blue-400 text-white border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md' }%>
+          </div>
+          <div class="text-center">
+            <p class="text-xs font-light text-red-500"><%= messages[:first_smoke_msg] %></p>
+          </div>
+        </div>
+        <div class="shadow mt-6 p-4">
+          <div class="text-center">
+            <h3 class="text-center">Vos 3 cigarettes préférées</h3>
+          </div>
+          <div class="mt-4 ">
+            <%=  f.input :best_cigarettes,
+                          as: :check_boxes,
+                          label: false,
+                          wrapper_html: { class:'text-center'},
+                          required: true,
+                          item_wrapper_class: 'tag-item',
+                          input_html: { class: 'tag-selector' },
+                          collection: ["Au réveil ⏰","Après petit-déjeuner 🥐", "Pause café ☕️ du matin",
+                                      "Après déjeuner 🍽", "Pause café ☕️ de l'après-midi",
+                                      "après le travail 💼", "avant diner",
+                                      "après diner 🍜", "avant de dormir 🛌"].zip(User::BEST_CIGARETTES_TAGS)%>
 
-    </div>
-
-    <div class="shadow mt-6 p-4">
-      <div class="text-center">
-        <h3 class="text-center">Vos 3 cigarettes préférées</h3>
-      </div>
-      <div class="mt-4 ">
-        <%=  f.input :best_cigarettes,
-                      as: :check_boxes,
-                      label: false,
-                      wrapper_html: { class:'text-center'},
-                      required: true,
-                      item_wrapper_class: 'tag-item',
-                      input_html: { class: 'tag-selector' },
-                      collection: ["Au réveil ⏰","Après petit-déjeuner 🥐", "Pause café ☕️ du matin",
-                                  "Après déjeuner 🍽", "Pause café ☕️ de l'après-midi",
-                                  "après le travail 💼", "avant diner",
-                                  "après diner 🍜", "avant de dormir 🛌"].zip(User::BEST_CIGARETTES_TAGS)%>
-
-      </div>
-
-    </div>
-    <div class="mt-8 text-center">
-      <%= f.submit "étape suivante", class:"text-white font-normal text-base no-underline bg-gray-300 px-16 py-3 rounded-3xl" %>
-    </div>
+          </div>
+          <div class="text-center">
+            <p class="text-xs font-light text-red-500"><%= messages[:best_cig_msg] %></p>
+          </div>
+        </div>
+        <div class="mt-8 text-center">
+          <%= f.submit "étape suivante", class:"text-white font-normal text-base no-underline bg-gray-300 px-16 py-3 rounded-3xl" %>
+        </div>
+      <% end %>
     <% end %>
   </div>
 </div>

@@ -20,7 +20,8 @@ class UsersController < ApplicationController
   end
 
   def profile_update
-    if params_checking(params[:user])
+    validation_result = params_checking(params[:user])
+    if validation_result[:boolean_msg]
       @user.average_cigarettes_per_day = params[:user][:average_cigarettes_per_day].to_i
       @user.hour_of_first_smoke        = params[:user][:hour_of_first_smoke].to_s
       @user.best_cigarette_list        = params[:user][:best_cigarettes].to_a.drop(1).join(", ")
@@ -30,7 +31,7 @@ class UsersController < ApplicationController
         render :smoker_profile_definition
       end
     else
-      render :smoker_profile_definition, locals: { messages: "test"}
+      render :smoker_profile_definition, locals: { messages: validation_result }
     end
   end
 
@@ -61,11 +62,23 @@ class UsersController < ApplicationController
   end
 
   def params_checking(user_params)
-    # not a good way to get errors.
-   return false if user_params[:average_cigarettes_per_day].to_i.nil? || user_params[:average_cigarettes_per_day].to_i < 2
-   return false if user_params[:hour_of_first_smoke] == ""
-   return false if user_params[:best_cigarettes].to_a.count < 4
-   true
+  validation_result = { boolean_msg: true, avg_cig_msg: nil, first_smoke_msg: nil, best_cig_msg: nil}
+  if user_params[:average_cigarettes_per_day].to_i.nil? || user_params[:average_cigarettes_per_day].to_i < 2
+   validation_result[:boolean_msg] = false
+   validation_result[:avg_cig_msg] = "please add cigarettes"
+  end
+
+  if user_params[:hour_of_first_smoke] == ""
+    validation_result[:boolean_msg] = false
+    validation_result[:first_smoke_msg] = "please pick a time"
+  end
+
+  if user_params[:best_cigarettes].to_a.drop(1).count != 3
+    validation_result[:boolean_msg] = false
+    validation_result[:best_cig_msg] = "please select 3 items"
+  end
+
+  validation_result
   end
 
 end
