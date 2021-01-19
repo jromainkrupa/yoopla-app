@@ -11,7 +11,7 @@ class ProgramsController < ApplicationController
     @program.user = @user
 
     authorize @program
-
+    raise
     if @program.save
 
     else
@@ -19,5 +19,9 @@ class ProgramsController < ApplicationController
     end
   end
 
+  private
 
+  def program_params
+     params.require(:program).permit(:program_start,:program_end)
+  end
 end

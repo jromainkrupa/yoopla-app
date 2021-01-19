@@ -1,4 +1,4 @@
-const dynamicPrice = () => {
+const daysCounter = () => {
   const startDate          = document.getElementById("range_start");
   const endDate            = document.getElementById("range_end");
   const totalDays          = document.getElementById("total-days")
@@ -50,4 +50,4 @@ const dynamicPrice = () => {
   }
 }
 
-export { dynamicPrice}
+export { daysCounter}
