@@ -12,7 +12,7 @@ const datePicker = () => {
     });
     flatpickr("#range_end", {
       altInput: true,
-      minDate: new Date().fp_incr(16),
+      minDate: new Date().fp_incr(5),
       maxDate: new Date().fp_incr(180)
     })
   }

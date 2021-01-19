@@ -9,8 +9,7 @@
     <%= simple_form_for @program do |f| %>
       <div id="program-form-div" class="mt-4">
         <div class="text-center">
-          <h3 class="text-center">Quand souhaiteriez-vous arrêter de fumer ?</h3>
-          <p class="text-sm font-light mt-1 text-gray-600">Nous préconisons entre 20 jours et 6 mois</p>
+          <h3 class="text-center">Définissez la durée du programme</h3>
         </div>
         <div class="text-center mt-4 px-4">
           <div>
@@ -22,7 +21,7 @@
                           input_html: {id: "range_start", class:"border rounded"} %>
           </div>
           <div class="mt-4">
-            <p class="text-xs text-gray-600">Séléctionner la <span>fin</span> de votre programme</p>
+            <p class="text-xs text-gray-600">Séléctionner la <span>fin</span> de votre programme <br>(date du 1<sup>er</sup> jour sans tabac) </p>
             <%= f.input  :program_end,
                           as: :string,
                           required: false,
@@ -31,10 +30,10 @@
           </div>
         </div>
       </div>
-
       <div class="mt-4 text-center">
         <p>Du <span id="start_date" class="font-bold">_________</span> au <span id="end_date" class="font-bold">_________</span></p>
         <p>Soit <span id="total-days" class="font-bold">0</span> jours</p>
+        <p>Nb total de cigarettes: <span data-avg-smoke="<%= current_user.average_cigarettes_per_day %>" id="nb-cig-prog"></span> VS <span id="nb-cig-theory"></span> sans programme</p>
         <div class="mt-4 flex items-center">
           <p class="mr-2"></p>
           <div id="gradient-difficulty" class="bg-gradient-to-r from-red-500 via-blue-500 to-green-500 h-12 w-full"></div>

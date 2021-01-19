@@ -8,12 +8,14 @@ const daysCounter = () => {
   const endDateReminder    = document.getElementById("end_date")
   const difficultyText     = document.getElementById("text_difficulty")
   const validationButton   = document.querySelector("input[name='commit']")
+  const nbCigProg          = document.getElementById("nb-cig-prog")
+  const nbCigTheory        = document.getElementById("nb-cig-theory")
 
   if (startDate && endDate && totalDays) {
     // calcul la diff entre la date start et la date end
     const diffCalc = ()  => {
       let dateDiffInMilliseconds = new Date(endDate.value) - new Date(startDate.value);
-      let nbrOfDays = dateDiffInMilliseconds / 86400000;
+      let nbrOfDays = (dateDiffInMilliseconds / 86400000) + 1;
 
       // met à jour le DOM avec les élements
       if(startDate.value && endDate.value) {
@@ -21,6 +23,7 @@ const daysCounter = () => {
         startDateReminder.innerText = new Date(startDate.value).toLocaleDateString('fr-FR')
         endDateReminder.innerText = new Date(endDate.value).toLocaleDateString('fr-FR')
         setDifficultyColor(nbrOfDays)
+        cigarettesCalculation(nbrOfDays)
       }
     };
 
@@ -41,6 +44,20 @@ const daysCounter = () => {
         validationButton.classList.add('bg-green-300','px-16')
       }
 
+    const cigarettesCalculation = (nbrOfDays) => {
+
+      console.log(nbCigProg.dataset.avgSmoke)
+      const arrayOfDays = [...Array(nbrOfDays).keys()]
+      let total = 0
+      arrayOfDays.forEach((day) => {
+        let y = ((- Number.parseInt(nbCigProg.dataset.avgSmoke, 10) / (nbrOfDays-1)) * day) + Number.parseInt(nbCigProg.dataset.avgSmoke, 10)
+        total += y
+        console.log(`jour ${day}`)
+        console.log(y)
+        console.log('---------')
+      })
+      nbCigTheory.innerText = 13
+    }
 
     [startDate, endDate].forEach(date => {
       date.addEventListener("change", (event) => {
