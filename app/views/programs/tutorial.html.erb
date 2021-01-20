@@ -1,0 +1,21 @@
+<div class="mt-4">
+
+  <div class="text-center mt-4">
+    <h2 class="text-2xl mx-auto font-medium text-gray-600">Comment ça marche ?</h2>
+    <p class="text-sm font-light mt-2 text-gray-600">
+      Votre programme commence demain 🥳
+    </p>
+  </div>
+  <div class="mt-4 shadow mx-auto w-2/3">
+    <ol class="text-center p-4">
+      <li class="text-base text-gray-800">Notre petit conseil est de préparer votre paquet le matin.</li>
+      <li class="text-base text-gray-800">Pour cela, laisser uniquement <%= @program.init_smoke %> cigarettes dans votre paquet.</li>
+      <li class="text-base text-gray-800">Chaque jour vous recevrez un sms vous donnant le nb de cigarettes de la journée.</li>
+      <li class="text-base text-gray-800">et pourrez retrouver ces informations sur votre tableau de bord.</li>
+    </ol>
+  </div>
+
+  <div class="mt-8 text-center">
+    <%= link_to "J'ai compris", program_path(@program),{ class:"text-white font-normal text-base no-underline bg-green-300 px-24 py-4 rounded-3xl"} %>
+  </div>
+</div>

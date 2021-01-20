@@ -12,5 +12,7 @@ class ProgramPolicy < ApplicationPolicy
   def create?
     record.user = user
   end
-
+  def tutorial?
+    record.user = user
+  end
 end

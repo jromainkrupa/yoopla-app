@@ -34,6 +34,8 @@
         <p>Du <span id="start_date" class="font-bold">_________</span> au <span id="end_date" class="font-bold">_________</span></p>
         <p>Soit <span id="total-days" class="font-bold">0</span> jours</p>
         <p>Nb total de cigarettes: <span data-avg-smoke="<%= current_user.average_cigarettes_per_day %>" id="nb-cig-prog"></span> VS <span id="nb-cig-theory"></span> sans programme</p>
+        <p class="hidden">Prix des cigarettes: <span id="spend-money">0</span> €</p>
+        <p>Economie réalisée durant le programme: <span id="spared-money">0</span> €</p>
         <div class="mt-4 flex items-center">
           <p class="mr-2"></p>
           <div id="gradient-difficulty" class="bg-gradient-to-r from-red-500 via-blue-500 to-green-500 h-12 w-full"></div>
@@ -46,7 +48,7 @@
                     as: :hidden,
                     input_html: {value: current_user.average_cigarettes_per_day } %>
       <div class="mt-8 text-center">
-        <%= f.submit "Choisir son univers", class:"text-white font-normal text-base no-underline bg-gray-300 px-24 py-4 rounded-3xl" %>
+        <%= f.submit "Séléctionner vos dates", class:"text-white font-normal text-base no-underline bg-gray-300 px-24 py-4 rounded-3xl" %>
       </div>
     <% end %>
   </div>
