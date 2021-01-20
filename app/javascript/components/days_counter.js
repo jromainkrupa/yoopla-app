@@ -1,4 +1,6 @@
-import { setDifficultyColor } from './set_difficulty_color.js'
+import { setDifficultyColor }           from './set_difficulty_color.js'
+import { programCigarettesCalculation } from './program_cigarettes_calculation.js'
+
 
 const daysCounter = () => {
   const startDate          = document.getElementById("range_start");
@@ -7,8 +9,7 @@ const daysCounter = () => {
   const totalPriceElement  = document.getElementById("total-smokes")
   const startDateReminder  = document.getElementById("start_date")
   const endDateReminder    = document.getElementById("end_date")
-  const nbCigProg          = document.getElementById("nb-cig-prog")
-  const nbCigTheory        = document.getElementById("nb-cig-theory")
+
 
   if (startDate && endDate && totalDays) {
     // calcul la diff entre la date start et la date end
@@ -22,26 +23,13 @@ const daysCounter = () => {
         startDateReminder.innerText = new Date(startDate.value).toLocaleDateString('fr-FR')
         endDateReminder.innerText = new Date(endDate.value).toLocaleDateString('fr-FR')
         setDifficultyColor(nbrOfDays)
-        cigarettesCalculation(nbrOfDays)
+        programCigarettesCalculation(nbrOfDays)
       }
     };
 
 
 
-    const cigarettesCalculation = (nbrOfDays) => {
 
-      console.log(nbCigProg.dataset.avgSmoke)
-      const arrayOfDays = [...Array(nbrOfDays).keys()]
-      let total = 0
-      arrayOfDays.forEach((day) => {
-        // this is y = ax + b
-        let y = Math.round(((- Number.parseInt(nbCigProg.dataset.avgSmoke, 10) / (nbrOfDays-1)) * day)) + Number.parseInt(nbCigProg.dataset.avgSmoke, 10)
-        total += y
-
-      })
-      nbCigProg.innerText = total
-      nbCigTheory.innerText = Number.parseInt(nbCigProg.dataset.avgSmoke, 10) * nbrOfDays
-    }
 
     [startDate, endDate].forEach(date => {
       date.addEventListener("change", (event) => {
