@@ -10,7 +10,6 @@ class ProgramsController < ApplicationController
     @user = User.find(params[:id])
     @program.user = @user
 
-
     authorize @program
 
     if @program.save
