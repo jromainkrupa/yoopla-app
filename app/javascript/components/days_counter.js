@@ -50,13 +50,13 @@ const daysCounter = () => {
       const arrayOfDays = [...Array(nbrOfDays).keys()]
       let total = 0
       arrayOfDays.forEach((day) => {
-        let y = ((- Number.parseInt(nbCigProg.dataset.avgSmoke, 10) / (nbrOfDays-1)) * day) + Number.parseInt(nbCigProg.dataset.avgSmoke, 10)
+        // this is y = ax + b
+        let y = Math.round(((- Number.parseInt(nbCigProg.dataset.avgSmoke, 10) / (nbrOfDays-1)) * day)) + Number.parseInt(nbCigProg.dataset.avgSmoke, 10)
         total += y
-        console.log(`jour ${day}`)
-        console.log(y)
-        console.log('---------')
+
       })
-      nbCigTheory.innerText = 13
+      nbCigProg.innerText = total
+      nbCigTheory.innerText = Number.parseInt(nbCigProg.dataset.avgSmoke, 10) * nbrOfDays
     }
 
     [startDate, endDate].forEach(date => {
