@@ -27,8 +27,8 @@ ActiveRecord::Schema.define(version: 2021_01_20_143441) do
 
   create_table "programs", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.datetime "program_end"
-    t.datetime "program_start"
+    t.datetime "end"
+    t.datetime "start"
     t.integer "init_smoke"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

@@ -26,6 +26,12 @@ class ProgramsController < ApplicationController
     authorize @program
   end
 
+  def show
+    @program = Program.find(params[:id])
+    authorize @program
+
+  end
+
   private
 
   def program_params

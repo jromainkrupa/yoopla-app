@@ -8,7 +8,10 @@ const updateCounter = (counter, count) => {
 const updateForm = (event) => {
   const offset = Number.parseInt(event.currentTarget.dataset.offset, 10);
   const counter = document.getElementById('counter');
-  const count = Number.parseInt(counter.dataset.count, 10) + offset;
+  const count = Number.parseInt(counter.dataset.count, 10);
+  console.log(offset)
+  console.log(count)
+
   if (count >= 1) { {}
     updateCounter(counter, count);
 
