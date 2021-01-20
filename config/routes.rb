@@ -14,7 +14,7 @@ Rails.application.routes.draw do
       put 'profile_update'
       get 'smoker_profile_definition_step_2'
       get 'invite_a_friend'
-      resources :programs, only: %i[show new create edit update destroy] do
+      resources :programs, only: %i[show new create] do
         get 'tutorial'
         resources :days, only: %i[index show create]
       end

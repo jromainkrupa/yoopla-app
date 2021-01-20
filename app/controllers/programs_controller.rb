@@ -35,7 +35,7 @@ class ProgramsController < ApplicationController
   private
 
   def program_params
-     params.require(:program).permit(:program_start,:program_end,:init_smoke)
+     params.require(:program).permit(:start,:end,:init_smoke)
   end
 
 
