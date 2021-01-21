@@ -52,11 +52,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   #The path used after sign up.
   def after_sign_in_path_for(resource)
-    if current_user.user_status == nil
+    if current_user.status == nil
       set_status_form_user_path(current_user)
     elsif current_user.user_status == "smoker_setup"
       smoker_profile_definition_user_path(current_user)
-    elsif current_user.user_status == "mentor"
+    elsif current_user.is_mentor?
       invite_a_friend_user_path(current_user)
     else
       super

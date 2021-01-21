@@ -1,7 +1,3 @@
-<%= @program.start %> <br>
-<%= @program.end %> <br>
-<%= @program.init_smoke %>
-
 <div class="flex flex-col items-center my-6">
   <h1 class="text-gray-800 font-semibold text-3xl">Your <span class="text-indigo-700">program</span></h1>
 </div>
@@ -9,8 +5,9 @@
 <div class="pl-4 pr-4 w-full">
   <div class="flex flex-col items-center justify-center">
     <% @program.number_of_days.times do |i| %>
+    <% date = @program.start + i.day %>
       <%# smoked_smokes = current_user.get_number_of_smoke(start + i.day) %>
-      <% allowed_smokes = @program.cigarette_allowed_for(@program.start + i.day) %>
+      <% allowed_smokes = @program.cigarette_allowed_for(date) %>
 
       <!-- below to know if the user success -->
       <%# percent = ((smoked_smokes.to_f / allowed_smokes) * 100) %>
@@ -19,8 +16,8 @@
       <div class="flex justify-start mb-2 shadow-md rounded-md">
 
         <div class="w-32 bg-white p-2 rounded-md">
-          <h3 class="text-base font-semibold text-gray-800">Day <%= i + 1 %></h3>
-          <h3 class="text-base text-gray-800"><%= (@program.start + i.day ).strftime('%a %d %b') %></h3>
+          <h3 class="text-base font-semibold text-gray-800">Day <%= @program.day_number(date) + 1 %></h3>
+          <h3 class="text-base text-gray-800"><%= date.strftime('%a %d %b') %></h3>
         </div>
         <div class="bg-teal-300 w-48 flex items-center font-semibold text-md
          rounded-md rounded-l-md text-gray-800">

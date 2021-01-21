@@ -2,15 +2,17 @@ class UsersController < ApplicationController
   before_action :find_user
 
   def set_status
-    choice = params[:user][:user_status]
+    choice = params[:user][:status]
 
     if choice == User::STATUS.first
-      @user.user_status = choice
+      @user.status = choice
+      @user.is_mentor = false
       @user.save
       redirect_to smoker_profile_definition_user_path(@user)
 
     elsif choice == User::STATUS.second
-      @user.user_status = choice
+      @user.status    = choice
+      @user.is_mentor = true
       @user.save
       redirect_to invite_a_friend_user_path(@user)
 

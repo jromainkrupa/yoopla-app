@@ -30,6 +30,13 @@
             autocomplete: "email",
             placeholder: "Adresse e-mail" %>
      </div>
+     <div class="mb-8 w-full">
+       <%= f.input :phone_number,
+            input_html: { class: "field-input w-full text-base font-normal pb-4" },
+            label: false,
+            required: true,
+            placeholder: "Téléphone" %>
+     </div>
 
      <div class="mb-8 w-full">
        <%= f.input :password,

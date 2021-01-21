@@ -1,6 +1,6 @@
 const buttonTextToggler = () => {
-  const radioButtonSmoker = document.querySelector('#user_user_status_smoker_setup')
-  const radioButtonMentor = document.querySelector('#user_user_status_mentor')
+  const radioButtonSmoker = document.querySelector('#user_status_smoker_setup')
+  const radioButtonMentor = document.querySelector('#user_status_invite_a_friend')
   const validationButton  = document.querySelector("input[name='commit']");
 
   if (radioButtonSmoker && radioButtonMentor && validationButton) {

@@ -14,14 +14,14 @@ class UserPolicy < ApplicationPolicy
   end
 
   def smoker_profile_definition?
-    record == user && user.user_status == "smoker_setup"
+    record == user && user.status == "smoker_setup" && !user.is_mentor?
   end
 
   def invite_a_friend?
-    record == user && user.user_status == "mentor"
+    record == user && user.is_mentor?
   end
 
   def profile_update?
-    record == user && user.user_status == "smoker_setup"
+    record == user && user.status == "smoker_setup" && !user.is_mentor?
   end
 end
