@@ -16,6 +16,20 @@ class ApplicationController < ActionController::Base
   # end
   private
 
+  def after_sign_in_path_for(resource)
+    if current_user.status == nil
+      set_status_form_user_path(current_user)
+    elsif current_user.status == "smoker_setup"
+      smoker_profile_definition_user_path(current_user)
+    elsif current_user.status == "ready_to_start"
+      program_dashboard_path(current_user)
+    elsif current_user.is_mentor?
+      invite_a_friend_user_path(current_user)
+    else
+      super
+    end
+  end
+
   def configure_permitted_parameters
     # For additional fields in app/views/devise/registrations/new.html.erb
     devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name])

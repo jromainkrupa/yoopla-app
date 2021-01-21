@@ -15,7 +15,6 @@ class UsersController < ApplicationController
       @user.is_mentor = true
       @user.save
       redirect_to invite_a_friend_user_path(@user)
-
     else
       render :set_status_form
     end

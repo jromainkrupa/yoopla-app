@@ -16,6 +16,8 @@ Rails.application.routes.draw do
       get 'invite_a_friend'
       resources :programs, only: %i[show new create] do
         get 'tutorial'
+        get 'get_ready'
+        get 'dashboard'
       end
     end
   end

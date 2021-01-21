@@ -1,13 +1,14 @@
 class ProgramsController < ApplicationController
+  before_action :find_user, only: [:new, :create, :tutorial, :dashboard, :get_ready]
+  before_action :find_and_authorize_program, only: [:tutorial, :dashboard, :get_ready]
+
   def new
     @program = Program.new
-    @user = User.find(params[:id])
     authorize @program
   end
 
   def create
     @program = Program.new(program_params)
-    @user = User.find(params[:id])
     @program.user = @user
 
     authorize @program
@@ -20,16 +21,21 @@ class ProgramsController < ApplicationController
   end
 
   def tutorial
-    @program = Program.find(params[:program_id])
-    @user = User.find(params[:id])
 
-    authorize @program
   end
 
   def show
     @program = Program.find(params[:id])
+    @user = current_user
+    @user.status = User::STATUS.third
+    @user.save!
     authorize @program
+  end
 
+  def dashboard
+  end
+
+  def get_ready
   end
 
   private
@@ -38,5 +44,12 @@ class ProgramsController < ApplicationController
      params.require(:program).permit(:start,:end,:init_smoke)
   end
 
+  def find_user
+    @user = User.find(params[:id])
+  end
 
+  def find_and_authorize_program
+    @program = Program.find(params[:program_id])
+    authorize @program
+  end
 end

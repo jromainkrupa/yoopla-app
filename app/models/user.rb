@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   devise :omniauthable, omniauth_providers: [:facebook]
 
-  has_one :program
+  has_one :program, dependent: :destroy
   acts_as_taggable_on :best_cigarettes
 
   BEST_CIGARETTES_TAGS = ["after_wake_up","after_breakfast",
@@ -14,7 +14,7 @@ class User < ApplicationRecord
                           "after_work","before_diner",
                           "after_dinner","before_bed"]
 
-  STATUS = ["smoker_setup","invite_a_friend"]
+  STATUS = ["smoker_setup","invite_a_friend","ready_to_start"]
 
   # validate :best_cigarettes
   validates :average_cigarettes_per_day, inclusion: { in: (3..60), allow_nil: true}

@@ -1,6 +1,5 @@
 class Program < ApplicationRecord
   belongs_to :user
-  has_many   :days
 
   def number_of_days
     ((self.end-self.start).fdiv(86400) + 1).to_i
@@ -13,6 +12,7 @@ class Program < ApplicationRecord
   end
 
   # this method returns the n° of the day of program the first day return 0 !
+  #dates have to be ActiveSupport::TimeWithZone
   def day_number(date)
     ((date - self.start).to_i.fdiv(86400)).round
   end
