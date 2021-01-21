@@ -20,7 +20,7 @@
                           label: false,
                           input_html: {id: "range_start", class:"border rounded"} %>
           </div>
-          <div class="mt-4">
+          <div id="range-end-div" class="mt-4 hidden">
             <p class="text-xs text-gray-600">Séléctionner la <span>fin</span> de votre programme <br>(date du 1<sup>er</sup> jour sans tabac) </p>
             <%= f.input  :end,
                           as: :string,
