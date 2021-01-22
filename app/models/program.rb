@@ -2,7 +2,7 @@ class Program < ApplicationRecord
   belongs_to :user
 
   def number_of_days
-    ((self.end-self.start).fdiv(86400) + 1).to_i
+    ((self.program_end-self.program_start).fdiv(86400) + 1).to_i
   end
 
   # this method is the diminution program it's just linear
@@ -14,6 +14,6 @@ class Program < ApplicationRecord
   # this method returns the n° of the day of program the first day return 0 !
   #dates have to be ActiveSupport::TimeWithZone
   def day_number(date)
-    ((date - self.start).to_i.fdiv(86400)).round
+    ((date - self.program_start).to_i.fdiv(86400)).round
   end
 end
