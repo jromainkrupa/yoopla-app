@@ -7,7 +7,7 @@ class PagesController < ApplicationController
       when "mentor"
         redirect_to invite_a_friend_path(current_user)
       when "smoker_setup"
-        redirect_to smoker_profile_definition_path(current_user)
+        redirect_to smoker_profile_definition_user_path(current_user)
       when "ready_to_start"
         redirect_to program_dashboard_path(current_user,current_user.program)
       end

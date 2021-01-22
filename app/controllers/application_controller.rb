@@ -22,7 +22,9 @@ class ApplicationController < ActionController::Base
     elsif current_user.status == "smoker_setup"
       smoker_profile_definition_user_path(current_user)
     elsif current_user.status == "ready_to_start"
-      program_dashboard_path(current_user)
+      program_get_ready_path(current_user,current_user.program)
+    elsif current_user.status == "in_program"
+      program_dashboard_path(current_user,current_user.program)
     elsif current_user.is_mentor?
       invite_a_friend_user_path(current_user)
     else

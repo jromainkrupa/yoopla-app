@@ -14,7 +14,7 @@ class User < ApplicationRecord
                           "after_work","before_diner",
                           "after_dinner","before_bed"]
 
-  STATUS = ["smoker_setup","invite_a_friend","ready_to_start"]
+  STATUS = ["smoker_setup","invite_a_friend","ready_to_start","in_program"]
 
   # validate :best_cigarettes
   validates :average_cigarettes_per_day, inclusion: { in: (3..60), allow_nil: true}
