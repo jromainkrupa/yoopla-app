@@ -8,16 +8,16 @@ Rails.application.routes.draw do
 
   resources :users do
     member do
-      get 'set_status_form'
-      put 'set_status'
-      get 'smoker_profile_definition'
-      put 'profile_update'
-      get 'smoker_profile_definition_step_2'
-      get 'invite_a_friend'
+      get :set_status_form
+      put :set_status
+      get :smoker_profile_definition
+      put :profile_update
+      get :smoker_profile_definition_step_2
+      get :invite_a_friend
       resources :programs, only: %i[show new create] do
-        get 'tutorial'
-        get 'get_ready'
-        get 'dashboard'
+        get :tutorial
+        get :get_ready
+        get :dashboard
       end
     end
   end
