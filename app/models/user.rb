@@ -6,6 +6,8 @@ class User < ApplicationRecord
   devise :omniauthable, omniauth_providers: [:facebook]
 
   has_one :program, dependent: :destroy
+  has_many :smokes
+
   acts_as_taggable_on :best_cigarettes
 
   BEST_CIGARETTES_TAGS = ["after_wake_up","after_breakfast",
@@ -19,6 +21,12 @@ class User < ApplicationRecord
   # validate :best_cigarettes
   validates :average_cigarettes_per_day, inclusion: { in: (3..60), allow_nil: true}
   validates :status, inclusion: { in: STATUS, allow_nil: true }
+
+
+  # for datetime retrieve instances smokes
+  def smoked_at(date)
+    smokes.where(created_at: date.beginning_of_day..date.end_of_day)
+  end
 
   def self.find_for_facebook_oauth(auth)
     # conversion part of the auth hash

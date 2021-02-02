@@ -27,7 +27,6 @@ class ProgramsController < ApplicationController
   def show
     @program = Program.find(params[:id])
     @user = current_user
-    @user.status = User::STATUS.third
     @user.save!
     authorize @program
   end
@@ -35,7 +34,6 @@ class ProgramsController < ApplicationController
   def dashboard
     @program = Program.find(params[:program_id])
     @user = current_user
-    @user.status = User::STATUS.fourth
     @user.save!
     authorize @program
   end

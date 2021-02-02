@@ -1,3 +1,6 @@
+<% allowed = @program.cigarette_allowed_for(Time.zone.now) %>
+<% smoked  = @user.smokes.today.count %>
+<% spared = allowed - smoked %>
 <div class="flex flex-col justify-center items-center mb-48">
   <h1 class="text-2xl font-bold">
     <span class="text-4xl text-blue-500">
@@ -8,7 +11,121 @@
     <%= Date.current.strftime('%B') %> <%= Date.current.day%><sup><%= %></sup>
   </p>
 </div>
+
+
+
+<section class="dials mx-auto relative -top-16">
+  <div class="dial move">
+    <div class="dial-background one"></div>
+    <div class="dial-container container1">
+      <div class="wedge"></div>
+    </div>
+    <div class="dial-container container2">
+      <div class="wedge"></div>
+    </div>
+    <div class="marker start"></div>
+    <div class="marker end"></div>
+  </div>
+  <div class="dial exercise">
+    <div class="dial-background two"></div>
+    <div class="dial-container container1">
+      <div class="wedge"></div>
+    </div>
+    <div class="marker start"></div>
+    <div class="marker end"></div>
+  </div>
+  <div class="dial stand">
+    <div class="dial-background three"></div>
+    <div class="dial-container container1">
+      <div class="wedge"></div>
+    </div>
+    <div class="marker start"></div>
+    <div class="marker end"></div>
+  </div>
+  <div class="timer-container">
+    <div class="timer">
+      <p>next opening:</p>
+      <span> 12:00 </span>
+    </div>
+  </div>
+</section>
+
+
+
+
+<style>
+  @keyframes rotate-marker-dial-1 {
+  19%, 100% {
+    transform: rotateZ(180deg);
+  }
+}
+
+@keyframes rotate-bg-dial-1-1 {
+
+  19%, 100% {
+    transform: rotateZ(180deg);
+  }
+}
+
+@keyframes rotate-marker-dial-2 {
+  20%, 100% {
+    transform: rotateZ(<%= (smoked * 180).fdiv(allowed) %>deg);
+  }
+}
+
+@keyframes rotate-bg-dial-2-1 {
+  19%, 100% {
+    transform: rotateZ(<%= (smoked * 180).fdiv(allowed) %>deg);
+  }
+}
+
+@keyframes rotate-marker-dial-3 {
+  19%, 100% {
+    transform: rotateZ(<%= (spared * 180).fdiv(allowed).round(2) %>deg);
+  }
+}
+
+@keyframes rotate-bg-dial-3-1 {
+  19%, 100% {
+    transform: rotateZ(<%= (spared * 180).fdiv(allowed).round(2) %>deg);
+  }
+}
+</style>
+
+<div class="z-50 w-full rounded-t-md flex flex-col items-center mt-16">
+  <div class=" shadow-md rounded-md flex justify-between items-center h-20 w-10/12 mb-4">
+    <p class="text-red-400 text-xl font-bold pl-4 pr-2 leading-6">You <br> smoked</p>
+    <div class="bg-red-400 h-full w-7/12 rounded-md flex items-center justify-center pt-2">
+      <p class="text-center text-white font-bold leading-5"><strong class="text-5xl">
+        <%= smoked %></strong> <br> cigarettes</p>
+    </div>
+  </div>
+  <div class="bg-indigo-500 shadow-md rounded-md flex justify-between items-center h-20 w-10/12 mb-4">
+      <p class="text-white text-xl font-bold pl-4 pr-2 leading-6">You <br> still have</p>
+    <div class="bg-white h-full w-7/12 rounded-md flex items-center justify-center">
+      <p class="text-indigo-500 font-bold pl-4 pr-2 leading-5 text-center"> <strong class="text-5xl">
+        <%= spared %> </strong> <br> cigarettes </p>
+    </div>
+  </div>
+  <div class="bg-white shadow-md rounded-md flex justify-between items-center h-20 w-10/12 mb-4">
+    <p class="text-green-300 text-xl font-bold pl-4 pr-2 leading-6">Today<br> goal</p>
+    <div class="bg-green-300 h-full w-7/12 rounded-md flex items-center justify-center pt-2">
+      <p class="text-center text-white font-bold leading-5"><strong class="text-5xl">
+        <%= allowed %></strong> <br> cigarettes</p>
+    </div>
+  </div>
+</div>
+
+
+
+
+
 <p>cigarettes autorisées:</p>
 <p>
-  <%= @program.cigarette_allowed_for(Time.zone.now) %>
+  <%= allowed %>
+</p>
+
+<p>cigarettes fumées:</p>
+<p>
+  <%= smoked %>
 </p>

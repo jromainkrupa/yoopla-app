@@ -1,6 +1,10 @@
 require 'date'
 
 FactoryBot.define do
+  factory :smoke do
+    user { nil }
+  end
+
   factory :user do
     first_name   { 'caroline' }
     last_name    { 'Janin' }

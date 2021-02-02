@@ -21,7 +21,7 @@
         </div>
         <div class="bg-teal-300 w-48 flex items-center font-semibold text-md
          rounded-md rounded-l-md text-gray-800">
-          <span class="ml-3">Smoked :  / <%= allowed_smokes %></span> </div>
+          <span class="ml-3">Smoked : <%= @user.smoked_at(date).count %> / <%= allowed_smokes %></span> </div>
         </div>
 
     <% end %>
