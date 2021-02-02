@@ -6,20 +6,20 @@
   </div>
   <div class="mt-4">
     <%= simple_form_for current_user, url: set_status_user_path(current_user), html: { method: :put } do |f| %>
-    <%= f.input :status,
-              as: :radio_buttons,
-              label: false,
-              collection_wrapper_tag: 'div',
-              collection_wrapper_class: 'category-wrapper',
-              item_wrapper_tag: 'div',
-              item_wrapper_class: 'category-item',
-              input_html: {class: 'category-selector'},
-              checked: false,
-              collection: [['Arrêter de fumer 💪','smoker_setup'], ['Devenir mentor ❤️','invite_a_friend']] %>
+      <%= f.input :status,
+                as: :radio_buttons,
+                label: false,
+                collection_wrapper_tag: 'div',
+                collection_wrapper_class: 'category-wrapper',
+                item_wrapper_tag: 'div',
+                item_wrapper_class: 'category-item',
+                input_html: {class: 'category-selector'},
+                checked: false,
+                collection: [['Arrêter de fumer 💪','smoker_setup'], ['Devenir mentor ❤️','invite_a_friend']] %>
 
-       <div class="mt-8 text-center">
-         <%= f.submit "Choisir son univers", class:"text-white font-normal text-base no-underline bg-gray-300 px-24 py-4 rounded-3xl" %>
-       </div>
+      <div class="mt-8 text-center">
+        <%= f.submit "Choisir son univers", class:"text-white font-normal text-base no-underline bg-gray-300 px-24 py-4 rounded-3xl" %>
+      </div>
     <% end %>
   </div>
 </div>

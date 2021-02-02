@@ -1,7 +1,7 @@
 require("@rails/ujs").start()
-require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
+require("@hotwired/turbo-rails")
 
 // custom functions
 import { buttonTextToggler } from "../components/button_text_toggler.js"
@@ -17,7 +17,8 @@ import "controllers"
 
 import "stylesheets/application"
 
-document.addEventListener('turbolinks:load', () => {
+document.addEventListener('turbo:load', () => {
+  console.log("turbo!")
   buttonTextToggler();
   cigaretteIncrementer();
   datePicker();

@@ -29,7 +29,7 @@ class UsersController < ApplicationController
       if @user.save
         redirect_to new_program_path(@user)
       else
-        render :smoker_profile_definition
+        render :smoker_profile_definition, locals: { messages: validation_result }
       end
     else
       render :smoker_profile_definition, locals: { messages: validation_result }

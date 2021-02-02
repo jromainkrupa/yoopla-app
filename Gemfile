@@ -10,17 +10,17 @@ gem 'omniauth-facebook'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 4.1'
 gem 'pundit'
-gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
+gem 'rails', '~> 6.1', '>= 6.1.1'
 gem 'webpacker', '~> 4.0'
 gem 'sass-rails', '>= 6'
 gem 'simple_form'
-gem 'turbolinks', '~> 5'
 
+gem 'hotwire-rails'
 gem 'dotenv-rails', groups: [:development, :test]
 
 
 # Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 4.0'
+gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

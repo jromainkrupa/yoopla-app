@@ -6,6 +6,7 @@
     <p class="text-sm font-light mt-2 text-gray-600">Nous avons besoin d'en savoir un peu plus sur vos habitudes de consommation pour créer un programme de réuction 100% personnalisé et efficace.</p>
   </div>
   <div>
+  <%= turbo_frame_tag @user do %>
     <%= simple_form_for @user, url: profile_update_user_path(@user), html: { method: :put } do |f| %>
         <div class="shadow mt-12 p-4">
           <div class="text-center">
@@ -88,5 +89,6 @@
           <%= f.submit "étape suivante", class:"text-white font-normal text-base no-underline bg-gray-300 px-16 py-3 rounded-3xl" %>
         </div>
       <% end %>
+    <% end %>
   </div>
 </div>
