@@ -1,4 +1,14 @@
 <div class="flex flex-col justify-center items-center mb-48">
-  <h1 class="text-2xl font-bold"> <span class="text-4xl text-blue-500">Day <%= @program.day_number(Time.zone.now)%></span></h1>
-  <p class="my-0 text-center text-xl text-blue-500 font-bold"><%= Date.current.strftime('%B') %> <%= Date.current.day%><sup><%= %></sup></p>
+  <h1 class="text-2xl font-bold">
+    <span class="text-4xl text-blue-500">
+      Day <%= @program.day_number(Time.zone.now)%>
+    </span>
+  </h1>
+  <p class="my-0 text-center text-xl text-blue-500 font-bold">
+    <%= Date.current.strftime('%B') %> <%= Date.current.day%><sup><%= %></sup>
+  </p>
 </div>
+<p>cigarettes autorisées:</p>
+<p>
+  <%= @program.cigarette_allowed_for(Time.zone.now) %>
+</p>

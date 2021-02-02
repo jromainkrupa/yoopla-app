@@ -1,6 +1,6 @@
 class ProgramsController < ApplicationController
   before_action :find_user, only: [:new, :create, :tutorial, :dashboard, :get_ready]
-  before_action :find_and_authorize_program, only: [:tutorial, :dashboard, :get_ready]
+  before_action :find_and_authorize_program, only: [:tutorial, :get_ready]
 
   def new
     @program = Program.new
@@ -33,6 +33,11 @@ class ProgramsController < ApplicationController
   end
 
   def dashboard
+    @program = Program.find(params[:program_id])
+    @user = current_user
+    @user.status = User::STATUS.fourth
+    @user.save!
+    authorize @program
   end
 
   def get_ready

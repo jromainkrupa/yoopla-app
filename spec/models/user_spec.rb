@@ -7,11 +7,7 @@ describe User do
 
   context 'associations' do
     it 'should associate a program' do
-      user = build(:user)
-      create(:program, user: user)
 
-      expect(Program.count).to eq(1)
-      expect(User.count).to eq(1)
     end
   end
 end
