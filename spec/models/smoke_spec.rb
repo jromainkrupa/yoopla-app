@@ -18,4 +18,8 @@ describe Smoke, type: :model do
 
     expect(Smoke.count).to eq(1)
   end
+
+  it 'should not destroy if nil' do
+
+  end
 end

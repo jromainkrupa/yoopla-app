@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 2021_02_02_105942) do
     t.string "phone_number"
     t.boolean "is_mentor", default: false
     t.boolean "is_admin", default: false
+    t.integer "smokes_count", default: 0, null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
