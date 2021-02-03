@@ -45,8 +45,8 @@
   </div>
   <div class="timer-container">
     <div class="timer">
-      <p>you're last smoke was:</p>
-      <span> <%= @user.smokes.last_smoke %> </span>
+      <p>next opening:</p>
+      <span> 12:00 </span>
     </div>
   </div>
 </section>
@@ -131,3 +131,5 @@
     </p>
   </div>
 </div>
+
+<p>you're last smoke was <span><%= Time.at(@user.time_since_last_smoke).strftime('%Hh:%M min ago') %></span> </p>
