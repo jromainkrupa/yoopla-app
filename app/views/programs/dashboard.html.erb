@@ -131,5 +131,10 @@
     </p>
   </div>
 </div>
-<%= link_to "add a smoke", smokes_path(@user), method: :post, remote: true %>
-<p>you're last smoke was <span><%= Time.at(@user.time_since_last_smoke).strftime('%Hh:%M min ago') %></span> </p>
+<p><%= link_to "add a smoke", smokes_path(@user), method: :post, remote: true %></p>
+<p><%= link_to "destroy a smoke", smoke_path, method: :delete, remote: true %></p>
+<% if @user.smokes.first.nil? %>
+  <p>no smoked yet</p>
+<% else %>
+  <p>you're last smoke was <span><%= Time.at(@user.time_since_last_smoke).utc.strftime('%Hh:%M min ago') %></span> </p>
+<% end %>

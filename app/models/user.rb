@@ -29,7 +29,7 @@ class User < ApplicationRecord
   end
 
   def time_since_last_smoke
-    Time.zone.now - smokes.last_smoke.first.created_at
+      Time.zone.now - smokes.last_smoke.first.created_at
   end
 
   def self.find_for_facebook_oauth(auth)

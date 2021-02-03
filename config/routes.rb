@@ -14,7 +14,7 @@ Rails.application.routes.draw do
         put :profile_update
         get :smoker_profile_definition_step_2
         get :invite_a_friend
-        resources :smokes, only: %i[new create delete]
+        resources :smokes, only: %i[create destroy]
 
         resources :programs, only: %i[create] do
           get :tutorial
