@@ -70,25 +70,25 @@
 
 @keyframes rotate-marker-dial-2 {
   20%, 100% {
-    transform: rotateZ(<%= (smoked * 180).fdiv(allowed) %>deg);
+    transform: rotateZ(<%= (smoked * 180).fdiv(allowed) > 180 ? 180 : (smoked * 180).fdiv(allowed) %>deg);
   }
 }
 
 @keyframes rotate-bg-dial-2-1 {
   19%, 100% {
-    transform: rotateZ(<%= (smoked * 180).fdiv(allowed) %>deg);
+    transform: rotateZ(<%= (smoked * 180).fdiv(allowed) > 180 ? 180 : (smoked * 180).fdiv(allowed) %>deg);
   }
 }
 
 @keyframes rotate-marker-dial-3 {
   19%, 100% {
-    transform: rotateZ(<%= (spared * 180).fdiv(allowed).round(2) %>deg);
+    transform: rotateZ(<%= (spared * 180).fdiv(allowed).round(2) < 0 ? 0 : (spared * 180).fdiv(allowed).round(2) %>deg);
   }
 }
 
 @keyframes rotate-bg-dial-3-1 {
   19%, 100% {
-    transform: rotateZ(<%= (spared * 180).fdiv(allowed).round(2) %>deg);
+    transform: rotateZ(<%= (spared * 180).fdiv(allowed).round(2) < 0 ? 0 : (spared * 180).fdiv(allowed).round(2) %>deg);
   }
 }
 </style>
