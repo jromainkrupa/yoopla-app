@@ -28,6 +28,10 @@ class User < ApplicationRecord
     smokes.where(created_at: date.beginning_of_day..date.end_of_day)
   end
 
+  def time_since_last_smoke
+    Time.zone.now - smokes.last_smoke.first.created_at
+  end
+
   def self.find_for_facebook_oauth(auth)
     # conversion part of the auth hash
     user_params = auth.slice("provider", "uid")
