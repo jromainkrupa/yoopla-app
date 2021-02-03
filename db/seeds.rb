@@ -33,8 +33,8 @@ joseph = User.create!(
   email: 'joseph@joseph.com',
   password: 'joseph@joseph.com'
   )
-Program.create!(start: Time.zone.now + 2.day,
-            end: Time.zone.now + 25.day,
+Program.create!(program_start: Time.zone.now + 2.day,
+            program_end: Time.zone.now + 25.day,
             init_smoke: 20,
             user: joseph)
 
@@ -49,9 +49,12 @@ romain = User.create!(
   password: 'romain@romain.com'
   )
 
-Program.create!(start: Time.zone.now - 2.day,
-            end: Time.zone.now + 35.day,
+Program.create!(program_start: Time.zone.now - 2.day,
+            program_end: Time.zone.now + 35.day,
             init_smoke: 15,
             user: romain)
 
+Smoke.create!(user: romain, created_at: Time.zone.now - 4.hours)
+Smoke.create!(user: romain, created_at: Time.zone.now - 3.hours)
+Smoke.create!(user: romain, created_at: Time.zone.now - 2.hours)
 puts "created #{User.count} users}"

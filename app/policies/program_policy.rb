@@ -22,7 +22,8 @@ class ProgramPolicy < ApplicationPolicy
   end
 
   def dashboard?
-    record.user == user && user.status == "in_program"
+    record.user == user
+    # && user.status == "in_program"
   end
 
   def get_ready?

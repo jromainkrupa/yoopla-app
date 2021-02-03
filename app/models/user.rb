@@ -6,7 +6,7 @@ class User < ApplicationRecord
   devise :omniauthable, omniauth_providers: [:facebook]
 
   has_one :program, dependent: :destroy
-  has_many :smokes
+  has_many :smokes, dependent: :destroy
 
   acts_as_taggable_on :best_cigarettes
 
