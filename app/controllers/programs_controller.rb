@@ -1,6 +1,6 @@
 class ProgramsController < ApplicationController
-  before_action :find_user, only: [:new, :create, :tutorial, :dashboard, :get_ready]
-  before_action :find_and_authorize_program, only: [:tutorial, :get_ready]
+  before_action :find_user, only: [:new, :calendar, :create, :tutorial, :dashboard, :get_ready]
+  before_action :find_and_authorize_program, only: [:tutorial, :calendar, :get_ready]
 
   def new
     @program = Program.new
@@ -8,7 +8,9 @@ class ProgramsController < ApplicationController
   end
 
   def create
-    @program = Program.new(program_params)
+    @program      = Program.new(program_params)
+    @user.status  = User::STATUS.third
+    @user.save
     @program.user = @user
 
     authorize @program
@@ -21,21 +23,21 @@ class ProgramsController < ApplicationController
   end
 
   def tutorial
-
   end
 
-  def show
-    @program = Program.find(params[:id])
-    @user = current_user
-    @user.save!
-    authorize @program
+  def calendar
   end
 
   def dashboard
     @program = Program.find(params[:program_id])
-    @user = current_user
-    @user.save!
     authorize @program
+
+    if Time.zone.now < @program.program_start
+      redirect_to program_get_ready_path(@user,@program)
+    else
+      @user.status = User::STATUS.fourth
+      @user.save
+    end
   end
 
   def get_ready

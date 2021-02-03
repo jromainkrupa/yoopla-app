@@ -14,7 +14,7 @@ class UserPolicy < ApplicationPolicy
   end
 
   def smoker_profile_definition?
-    record == user && user.status == "smoker_setup" && !user.is_mentor?
+    record == user && user.status == User::STATUS.first && !user.is_mentor?
   end
 
   def invite_a_friend?
@@ -22,6 +22,6 @@ class UserPolicy < ApplicationPolicy
   end
 
   def profile_update?
-    record == user && user.status == "smoker_setup" && !user.is_mentor?
+    record == user && user.status == User::STATUS.first && !user.is_mentor?
   end
 end

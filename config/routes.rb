@@ -16,7 +16,8 @@ Rails.application.routes.draw do
         get :invite_a_friend
         resources :smokes, only: %i[create destroy]
 
-        resources :programs, only: %i[create] do
+        resources :programs,only: %i[create new] do
+          get :calendar
           get :tutorial
           get :get_ready
           get :dashboard

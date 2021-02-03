@@ -14,19 +14,18 @@ class ProgramPolicy < ApplicationPolicy
   end
 
   def tutorial?
-    record.user == user
+    record.user == user && user.status == User::STATUS.third
   end
 
-  def show?
+  def calendar?
     record.user == user
   end
 
   def dashboard?
-    record.user == user
-    # && user.status == "in_program"
+    record.user == user && user.status == User::STATUS.third || User::STATUS.fourth
   end
 
   def get_ready?
-    record.user == user && user.status == "ready_to_start"
+    record.user == user && user.status == User::STATUS.third
   end
 end

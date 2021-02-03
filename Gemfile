@@ -36,6 +36,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'guard-rspec', require: false
   gem 'factory_bot_rails'
+  gem 'webdrivers'
 end
 
 group :development do
@@ -52,7 +53,7 @@ group :test do
   # gem 'launchy'
   # gem 'selenium-webdriver'
   gem 'shoulda-matchers'
-  # gem 'webdrivers'
+
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
