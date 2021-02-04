@@ -20,6 +20,7 @@ RSpec.configure do |config|
 
   # it allows to use login_as(FactoryBot.create(:user))
   config.include Warden::Test::Helpers
+  config.include AuthenticationSupport
 
   config.use_transactional_fixtures = true
 

@@ -13,5 +13,10 @@ FactoryBot.define do
     status       { nil }
     is_mentor    { false }
     password     { 'c@c.com' }
+
+    factory :mentor_user do
+      is_mentor { true }
+      status    { 'invite_a_friend' }
+    end
   end
 end
