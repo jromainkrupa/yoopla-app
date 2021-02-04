@@ -47,6 +47,13 @@ describe Program, type: :model do
     end
 
     it 'is invalid with a program shorter than 2 weeks' do
+      program = Program.new(
+        program_start: Time.zone.now + 1.day,
+        program_end: Time.zone.now)
+      program.valid?
+      p program.errors
+      expect(program.errors[:program_end]).to include('must be at least 15 days')
+
     end
     it 'is invalid with a start date before tomorow'
     it 'is invalid with a init_smoke superior at 30 smokes'

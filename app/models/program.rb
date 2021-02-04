@@ -5,6 +5,7 @@ class Program < ApplicationRecord
   validates :program_start, presence: true
   validates :program_end, presence: true
   validate :end_date_after_start_date
+  validate :program_last_min_two_weeks
 
 
 
@@ -30,6 +31,13 @@ class Program < ApplicationRecord
     return if program_end.blank? || program_start.blank?
     if program_end < program_start
       errors.add(:program_end,"must be after the start_date")
+    end
+  end
+
+  def program_last_min_two_weeks
+    return if program_end.blank? || program_start.blank?
+    if (program_end - program_start) < 1296000 # this 15 days is sec
+      errors.add(:program_end,"must be at least 15 days")
     end
   end
 end
