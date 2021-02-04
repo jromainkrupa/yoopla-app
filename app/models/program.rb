@@ -1,11 +1,12 @@
 class Program < ApplicationRecord
   belongs_to :user
 
-  validates :init_smoke, presence: true
+  validates :init_smoke, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 5, message: "We won't be very useful if you smoke less than %{value} cigarettes a day" }
   validates :program_start, presence: true
   validates :program_end, presence: true
-  validate :end_date_after_start_date
-  validate :program_last_min_two_weeks
+  validate  :end_date_after_start_date
+  validate  :program_last_min_two_weeks
+  validate  :start_tomorow
 
 
 
@@ -30,14 +31,21 @@ class Program < ApplicationRecord
   def end_date_after_start_date
     return if program_end.blank? || program_start.blank?
     if program_end < program_start
-      errors.add(:program_end,"must be after the start_date")
+      errors.add(:program_end, "must be after the start_date")
     end
   end
 
   def program_last_min_two_weeks
     return if program_end.blank? || program_start.blank?
     if (program_end - program_start) < 1296000 # this 15 days is sec
-      errors.add(:program_end,"must be at least 15 days")
+      errors.add(:program_end, "must be at least 15 days")
+    end
+  end
+
+  def start_tomorow
+    return if program_start.blank?
+    if (program_start < Time.zone.now + 1.day)
+      errors.add(:program_start, "can't start before tomorow")
     end
   end
 end
