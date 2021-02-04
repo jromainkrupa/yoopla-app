@@ -30,7 +30,16 @@ feature 'Sign_in User' do
     program    = create(:program, user: ready_user)
 
     sign_in_as(ready_user)
-    sleep(2)
+
     expect(page).to have_current_path(/.get_ready/)
+  end
+
+  scenario 'as in_program is redirect to dashboard' do
+    user    = create(:in_program_user)
+    program = create(:program_started, user: user)
+
+    sign_in_as(user)
+
+    expect(page).to have_current_path(/.dashboard/)
   end
 end

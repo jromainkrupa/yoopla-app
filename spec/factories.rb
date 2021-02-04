@@ -31,7 +31,12 @@ FactoryBot.define do
   factory :program do
     user
     init_smoke    { 17 }
-    program_start { Time.zone.now + 2.days }
-    program_end   { Time.zone.now + 22.days }
+    program_start { Time.zone.now + 2.days  }
+    program_end   { program_start + 20.days }
+
+    factory :program_started do
+      program_start { Time.zone.now - 2.days  }
+      program_end   { program_start + 20.days }
+    end
   end
 end
