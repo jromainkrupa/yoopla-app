@@ -18,5 +18,20 @@ FactoryBot.define do
       is_mentor { true }
       status    { 'invite_a_friend' }
     end
+
+    factory :ready_to_start_user do
+      status { 'ready_to_start' }
+    end
+
+    factory :in_program_user do
+      status { 'in_program' }
+    end
+  end
+
+  factory :program do
+    user
+    init_smoke    { 17 }
+    program_start { Time.zone.now + 2.days }
+    program_end   { Time.zone.now + 22.days }
   end
 end

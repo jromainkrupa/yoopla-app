@@ -14,15 +14,23 @@ feature 'Sign_in User' do
     user = create(:user)
     sign_in_as(user)
 
-    expect(page).to have_content('mentor')
+    expect(page).to have_current_path(/.set_status_form/)
     expect(user.status).to eq(nil)
   end
 
-  scenario 'a mentor is redirect to invite a friend' do
+  scenario 'as a mentor is redirect to invite a friend' do
     mentor_user = create(:mentor_user)
     sign_in_as(mentor_user)
 
+    expect(page).to have_current_path(/.invite_a_friend/)
+  end
 
+  scenario 'as ready_to_start is redirect to get ready' do
+    ready_user = create(:ready_to_start_user)
+    program    = create(:program, user: ready_user)
 
+    sign_in_as(ready_user)
+    sleep(2)
+    expect(page).to have_current_path(/.get_ready/)
   end
 end
