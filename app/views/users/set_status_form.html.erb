@@ -5,7 +5,7 @@
     <p class="text-sm font-light mt-8 text-gray-600">Séléctionner Arrêter de fumer si vous souhaitez utiliser l'application pour vous-même. Si vous souhaitez aider un ami à arrêter de fumer selectionner "devenir mentor".</p>
   </div>
   <div class="mt-4">
-    <%= simple_form_for current_user, url: set_status_user_path(current_user), html: { method: :put } do |f| %>
+    <%= simple_form_for current_user, url: set_status_user_path(current_user), html: { method: :put, name: 'status' }  do |f| %>
     <%= f.input :status,
               as: :radio_buttons,
               label: false,
