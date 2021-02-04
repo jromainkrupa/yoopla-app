@@ -19,6 +19,8 @@ class User < ApplicationRecord
   STATUS = ["smoker_setup","invite_a_friend","ready_to_start","in_program"]
 
   # validate :best_cigarettes
+  validates :first_name, presence: true
+  validates :last_name, presence: true
   validates :average_cigarettes_per_day, inclusion: { in: (3..60), allow_nil: true}
   validates :status, inclusion: { in: STATUS, allow_nil: true }
 
