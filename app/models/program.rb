@@ -1,12 +1,11 @@
 class Program < ApplicationRecord
   belongs_to :user
 
-  validates :init_smoke, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 5, message: "We won't be very useful if you smoke less than %{value} cigarettes a day" }
+  validates :init_smoke, presence: true
   validates :program_start, presence: true
   validates :program_end, presence: true
-  validate  :end_date_after_start_date
-  validate  :program_last_min_two_weeks
-  validate  :start_tomorow
+  validate  :program_duration
+  validate  :init_smoke_range
 
 
 
@@ -28,24 +27,25 @@ class Program < ApplicationRecord
 
   private
 
-  def end_date_after_start_date
+  def program_duration
     return if program_end.blank? || program_start.blank?
     if program_end < program_start
       errors.add(:program_end, "must be after the start_date")
-    end
-  end
-
-  def program_last_min_two_weeks
-    return if program_end.blank? || program_start.blank?
-    if (program_end - program_start) < 1296000 # this 15 days is sec
+    elsif (program_end - program_start) < 1296000 # this 15 days is sec
       errors.add(:program_end, "must be at least 15 days")
+    elsif (program_end - program_start) > 31540000 # this is a year in sec
+      errors.add(:program_end, "program can't be longer than a year")
+    elsif program_start < (Time.zone.now + 1.day)
+      errors.add(:program_start, "can't start before tomorow")
     end
   end
 
-  def start_tomorow
-    return if program_start.blank?
-    if (program_start < Time.zone.now + 1.day)
-      errors.add(:program_start, "can't start before tomorow")
+  def init_smoke_range
+    return if init_smoke.blank?
+    if init_smoke < 5
+      errors.add(:init_smoke, "We won't be very useful if you smoke less than 5 cigarettes a day")
+    elsif init_smoke > 20
+      errors.add(:init_smoke, "We initialize the program with maximum one packet a day")
     end
   end
 end
