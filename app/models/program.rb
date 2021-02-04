@@ -1,6 +1,13 @@
 class Program < ApplicationRecord
   belongs_to :user
 
+  validates :init_smoke, presence: true
+  validates :program_start, presence: true
+  validates :program_end, presence: true
+  validate :end_date_after_start_date
+
+
+
   def number_of_days
     ((self.program_end-self.program_start).fdiv(86400) + 1).to_i
   end
@@ -15,5 +22,14 @@ class Program < ApplicationRecord
   #dates have to be ActiveSupport::TimeWithZone
   def day_number(date)
     ((date - self.program_start).to_i.fdiv(86400)).round
+  end
+
+  private
+
+  def end_date_after_start_date
+    return if program_end.blank? || program_start.blank?
+    if program_end < program_start
+      errors.add(:program_end,"must be after the start_date")
+    end
   end
 end

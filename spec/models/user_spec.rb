@@ -53,5 +53,6 @@ describe User, type: :model do
       user.valid?
       expect(user.errors[:status]).to include('is not included in the list')
     end
+
   end
 end
