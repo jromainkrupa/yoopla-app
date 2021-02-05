@@ -28,7 +28,11 @@ describe Smoke, type: :model do
   end
 
   context 'today scope' do
-    it 'return all the cigarettes smoked today for one user' do
+    it 'returns 0 if no cigarettes were smoked today' do
+      user = create(:user)
+      expect(user.smokes.today.count).to eq(0)
+    end
+    it 'return all the cigarettes instances smoked today for one user' do
       user = create(:user)
       5.times do
        Smoke.create(user: user)
@@ -48,6 +52,34 @@ describe Smoke, type: :model do
        Smoke.create(user: user_two)
       end
       expect(Smoke.today.count).to eq(10)
+    end
+  end
+
+  context 'last_smoke scope' do
+    it 'returns 0 if no cigarettes were smoked' do
+      user = create(:user)
+
+      expect(user.smokes.last_smoke.count).to eq(0)
+    end
+
+    it 'returns the last cigarette instance' do
+      user  = create(:user)
+      3.times do
+        Smoke.create(user:user)
+      end
+      last_smoke = Smoke.create(user: user)
+      expect(user.smokes.last_smoke.to_a[0]).to eq(last_smoke)
+    end
+
+    it 'returns the last cigarette smoked by any user' do
+      user_one = create(:user)
+      user_two = create(:user, email:'another@another.com')
+      5.times do
+       Smoke.create(user: user_one)
+       Smoke.create(user: user_two)
+      end
+      last_smoke = Smoke.create(user: user_one)
+      expect(user_one.smokes.last_smoke.to_a[0]).to eq(last_smoke)
     end
   end
 
